@@ -7,25 +7,27 @@ class Section extends Component {
         super(props);
         this.state = {
             section: this.props.sectionMetaData.id,
-            showInput: false,
+            showInputGroup: false,
             items: []
         }
     }
 
     toggleAddInput = () => {
         this.setState({
-            showInput: !this.state.showInput
+            showInputGroup: !this.state.showInputGroup
         })
     };
 
     addItem = () => {
         let name = document.querySelector(`#${this.state.section}-name-input`);
         let desc = document.querySelector(`#${this.state.section}-desc-input`);
-        this.setState({
-            items: this.state.items.concat({name: name.value, desc: desc.value})
-        }, () => {
-            console.log(this.state.items)
-        })
+        if (name.value !== '') {
+            this.setState({
+                items: this.state.items.concat({name: name.value, desc: desc.value})
+            }, () => {
+                console.log(this.state.items)
+            })
+        }
     };
 
     updateItem = (idx, update) => {
@@ -50,7 +52,9 @@ class Section extends Component {
             <div className="section-container">
                 <div className="section-header">
                     <h2>{this.props.sectionMetaData.title}</h2>
-                    <button id={`${this.state.section}-add-btn`} onClick={this.toggleAddInput}>Add</button>
+                    <button id={`${this.state.section}-add-btn`} className={this.state.showInputGroup ? 'hide' : 'show'}
+                            onClick={this.toggleAddInput}>Add
+                    </button>
                 </div>
                 <ol id={`${this.state.section}-section-list`} className="section-list">
                     {Object.values(this.state.items).map(((val, idx) => (
@@ -60,9 +64,9 @@ class Section extends Component {
                     )))}
                 </ol>
                 <div id={`${this.props.sectionMetaData.id}-input-group`}
-                     className={this.state.showInput ? 'show' : 'hide'}>
-                    <input type="text" id={`${this.state.section}-name-input`}/>
-                    <input type="text" id={`${this.state.section}-desc-input`}/>
+                     className={this.state.showInputGroup ? 'show' : 'hide'}>
+                    <input type="text" id={`${this.state.section}-name-input`} placeholder="name"/>
+                    <input type="text" id={`${this.state.section}-desc-input`} placeholder="description"/>
                     <button onClick={() => {
                         this.addItem();
                         this.toggleAddInput()

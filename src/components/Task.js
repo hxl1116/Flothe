@@ -39,8 +39,8 @@ class Task extends Component {
                 <button onClick={this.toggleEditGroup}>Edit</button>
                 <button onClick={this.deleteTask}>Delete</button>
                 <div id={`${this.props.section}-edit-group`} className={this.state.showEditGroup ? 'show' : 'hide'}>
-                    <input type="text" id={`${this.props.section}-name-edit`}/>
-                    <input type="text" id={`${this.props.section}-desc-edit`}/>
+                    <input type="text" id={`${this.props.section}-name-edit`} placeholder="name"/>
+                    <input type="text" id={`${this.props.section}-desc-edit`} placeholder="description"/>
                     <button onClick={() => {
                         this.updateTask();
                         this.toggleEditGroup()
