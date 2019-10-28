@@ -2,11 +2,11 @@ import React, {Component} from 'react';
 import Section from "./Section";
 
 const sections = {
-    'Calendar': {id: 'calendar', title: 'Calendar'},
-    'To-Do': {id: 'todo', title: 'To-Do'},
-    'Goals': {id: 'goals', title: 'Goals'},
-    'Motivation': {id: 'motivation', title: 'Motivation'},
-    'Happiness': {id: 'happiness', title: 'Happiness'}
+    'Calendar': {id: 'calendar', name: 'Calendar'},
+    'To-Do': {id: 'todo', name: 'To-Do'},
+    'Goals': {id: 'goals', name: 'Goals'},
+    'Motivation': {id: 'motivation', name: 'Motivation'},
+    'Happiness': {id: 'happiness', name: 'Happiness'}
 };
 
 class App extends Component {
@@ -16,9 +16,9 @@ class App extends Component {
 
     render() {
         return (
-            <div id="sections-wrapper" className="day-layout">
+            <div id="content-wrapper" className="day-layout">
                 {Object.values(sections).map(section => (
-                    <Section key={`${section.id}-section`} sectionMetaData={section}/>
+                    <Section key={`${section.id}-section`} id={section.id} name={section.name}/>
                 ))}
             </div>
         )

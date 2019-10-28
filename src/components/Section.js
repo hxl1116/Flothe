@@ -6,7 +6,6 @@ class Section extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            section: this.props.sectionMetaData.id,
             showInputGroup: false,
             items: []
         }
@@ -19,8 +18,8 @@ class Section extends Component {
     };
 
     addItem = () => {
-        let name = document.querySelector(`#${this.state.section}-name-input`);
-        let desc = document.querySelector(`#${this.state.section}-desc-input`);
+        let name = document.querySelector(`#${this.props.name}-name-input`);
+        let desc = document.querySelector(`#${this.props.name}-desc-input`);
         if (name.value !== '') {
             this.setState({
                 items: this.state.items.concat({name: name.value, desc: desc.value})
@@ -49,24 +48,22 @@ class Section extends Component {
 
     render() {
         return (
-            <div className="section-container">
+            <div id={`${this.props.id}-section`} className="section-container">
                 <div className="section-header">
-                    <h2>{this.props.sectionMetaData.title}</h2>
-                    <button id={`${this.state.section}-add-btn`} className={this.state.showInputGroup ? 'hide' : 'show'}
-                            onClick={this.toggleAddInput}>Add
-                    </button>
+                    <h2>{this.props.name}</h2>
+                    <i className={`fas fa-plus fa-lg ${this.state.showInputGroup ? 'hide' : 'show'}`}
+                       onClick={this.toggleAddInput}/>
                 </div>
-                <ol id={`${this.state.section}-section-list`} className="section-list">
+                <ol id={`${this.props.id}-section-list`} className="section-list">
                     {Object.values(this.state.items).map(((val, idx) => (
-                        <Task key={`${this.state.section}-task-${idx}`} section={this.state.section} idx={idx}
+                        <Task key={`${this.props.name}-task-${idx}`} section={this.props.id} idx={idx}
                               name={val.name} desc={val.desc} updateSelf={(idx, update) => this.updateItem(idx, update)}
                               deleteSelf={(idx) => this.deleteItem(idx)}/>
                     )))}
                 </ol>
-                <div id={`${this.props.sectionMetaData.id}-input-group`}
-                     className={this.state.showInputGroup ? 'show' : 'hide'}>
-                    <input type="text" id={`${this.state.section}-name-input`} placeholder="name"/>
-                    <input type="text" id={`${this.state.section}-desc-input`} placeholder="description"/>
+                <div className={`section-input-group ${this.state.showInputGroup ? 'show' : 'hide'}`}>
+                    <input type="text" id={`${this.props.name}-name-input`} placeholder="Name"/>
+                    <input type="text" id={`${this.props.name}-desc-input`} placeholder="Description"/>
                     <button onClick={() => {
                         this.addItem();
                         this.toggleAddInput()
@@ -79,7 +76,8 @@ class Section extends Component {
 }
 
 Section.propTypes = {
-    sectionMetaData: PropTypes.object
+    id: PropTypes.string,
+    name: PropTypes.string
 };
 
 export default Section

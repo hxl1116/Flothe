@@ -31,16 +31,19 @@ class Task extends Component {
 
     render() {
         return (
-            <div>
+            <div className="task-item-group">
                 <li>
                     <h3>{this.props.name}</h3>
                     <p>{this.props.desc}</p>
                 </li>
-                <button onClick={this.toggleEditGroup}>Edit</button>
-                <button onClick={this.deleteTask}>Delete</button>
-                <div id={`${this.props.section}-edit-group`} className={this.state.showEditGroup ? 'show' : 'hide'}>
-                    <input type="text" id={`${this.props.section}-name-edit`} placeholder="name"/>
-                    <input type="text" id={`${this.props.section}-desc-edit`} placeholder="description"/>
+                <div className="icon-group">
+                    <i className="fas fa-ellipsis-v fa-lg"/>
+                    <i className="far fa-edit fa-lg" onClick={this.toggleEditGroup}/>
+                    <i className="far fa-trash-alt fa-lg" onClick={this.deleteTask}/>
+                </div>
+                <div id={`${this.props.section}-edit-group`} className={`section-input-group ${this.state.showEditGroup ? 'show' : 'hide'}`}>
+                    <input type="text" id={`${this.props.section}-name-edit`} placeholder="Name"/>
+                    <input type="text" id={`${this.props.section}-desc-edit`} placeholder="Description"/>
                     <button onClick={() => {
                         this.updateTask();
                         this.toggleEditGroup()
