@@ -1,4 +1,39 @@
 @import url("https://fonts.googleapis.com/css?family=Montserrat&display=swap");
+.section-container {
+  display: flex;
+  flex-flow: column nowrap;
+}
+
+.section-header {
+  display: grid;
+  grid: "title btn"/5fr auto;
+}
+.section-header h2 {
+  text-align: center;
+  margin: 0;
+  padding: 10px 15px;
+}
+.section-header i {
+  text-align: center;
+  place-self: center;
+  padding: 10px 10px;
+}
+
+.section-list {
+  display: flex;
+  flex-flow: column nowrap;
+  place-self: center;
+  width: 80%;
+}
+
+.section-input-group {
+  display: flex;
+  flex-flow: column nowrap;
+  place-self: center;
+  align-items: center;
+  width: 80%;
+}
+
 * {
   font-family: "Montserrat", sans-serif;
   margin: 0;
@@ -39,41 +74,6 @@ button:hover {
   height: 0;
   opacity: 0;
   overflow: hidden;
-}
-
-.section-container {
-  display: flex;
-  flex-flow: column nowrap;
-}
-
-.section-header {
-  display: grid;
-  grid: "title btn"/5fr auto;
-}
-.section-header h2 {
-  text-align: center;
-  margin: 0;
-  padding: 10px 15px;
-}
-.section-header i {
-  text-align: center;
-  place-self: center;
-  padding: 10px 10px;
-}
-
-.section-list {
-  display: flex;
-  flex-flow: column nowrap;
-  place-self: center;
-  width: 80%;
-}
-
-.section-input-group {
-  display: flex;
-  flex-flow: column nowrap;
-  place-self: center;
-  align-items: center;
-  width: 80%;
 }
 
 .task-item-group {

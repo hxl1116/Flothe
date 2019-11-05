@@ -37,7 +37,7 @@ class Task extends Component {
                     <p>{this.props.desc}</p>
                 </li>
                 <div className="icon-group">
-                    <i className="fas fa-ellipsis-v fa-lg"/>
+                    {/*<i className="fas fa-ellipsis-v fa-lg"/>*/}b
                     <i className="far fa-edit fa-lg" onClick={this.toggleEditGroup}/>
                     <i className="far fa-trash-alt fa-lg" onClick={this.deleteTask}/>
                 </div>
