@@ -1,4 +1,15 @@
 @import url("https://fonts.googleapis.com/css?family=Montserrat&display=swap");
+* {
+  font-family: "Montserrat", sans-serif;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+body {
+  font-size: 18px;
+}
+
 .section-container {
   display: flex;
   flex-flow: column nowrap;
@@ -7,6 +18,7 @@
 .section-header {
   display: grid;
   grid: "title btn"/5fr auto;
+  margin: 10px 15px;
 }
 .section-header h2 {
   text-align: center;
@@ -34,15 +46,27 @@
   width: 80%;
 }
 
-* {
-  font-family: "Montserrat", sans-serif;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
+.item-group {
+  display: grid;
+  grid: "content icons"/5fr auto;
 }
-
-body {
-  font-size: 18px;
+.item-group li h3 {
+  padding: 10px 15px;
+}
+.item-group li p {
+  padding: 10px 15px;
+}
+.item-group .options-group {
+  display: flex;
+  flex-flow: column;
+  place-self: center;
+  justify-items: center;
+}
+.item-group .options-group i {
+  text-align: center;
+  place-self: center;
+  margin: 2px 2px;
+  padding: 3px 3px;
 }
 
 input {
@@ -76,30 +100,9 @@ button:hover {
   overflow: hidden;
 }
 
-.task-item-group {
+#sections-wrapper {
   display: grid;
-  grid: "content icons"/5fr auto;
-}
-.task-item-group li h3 {
-  padding: 10px 15px;
-}
-.task-item-group li p {
-  padding: 10px 15px;
-}
-.task-item-group .icon-group {
-  display: flex;
-  flex-flow: column;
-  place-self: center;
-}
-.task-item-group .icon-group i {
-  text-align: center;
-  place-self: center;
-  padding: 3px 3px;
-}
-
-#content-wrapper {
-  display: grid;
-  grid: "calendar calendar" 50vh "todo motivation" 25vh "goals happiness" 25vh/1fr 1fr;
+  grid: "calendar calendar" 50vh "todo motivation" 25vh "goal happiness" 25vh/1fr 1fr;
 }
 
 #calendar-section {
@@ -110,8 +113,8 @@ button:hover {
   grid-area: todo;
 }
 
-#goals-section {
-  grid-area: goals;
+#goal-section {
+  grid-area: goal;
 }
 
 #motivation-section {
@@ -122,4 +125,4 @@ button:hover {
   grid-area: happiness;
 }
 
-/*# sourceMappingURL=base.css.map */
+/*# sourceMappingURL=style.css.map */
