@@ -11,8 +11,11 @@ class Sidebar extends Component {
     render() {
         return (
             <div>
+                <button type="button">Sidebar</button>
                 <div></div>
             </div>
         )
     }
 }
+
+export default Sidebar;

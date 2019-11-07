@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import Section from "./Section";
+import Sidebar from "./Sidebar";
 
 const sections = {
     'To-Do': {id: 'todo', name: 'To-Do'},
@@ -16,6 +17,7 @@ class App extends Component {
     render() {
         return (
             <div id="content-wrapper" className="day-layout">
+                <Sidebar/>
                 <Section id={'calendar'} name={'Calendar'} timed={true}/>
                 {Object.values(sections).map(section => (
                     <Section key={`${section.id}-section`} id={section.id} name={section.name}/>
