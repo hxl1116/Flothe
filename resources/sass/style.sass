@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap')
-@import "partials/section"
 @import "partials/base"
+@import "partials/section"
+@import "partials/item"
 
 input
   width: 50%
@@ -29,30 +30,9 @@ button
   opacity: 0
   overflow: hidden
 
-.task-item-group
+#sections-wrapper
   display: grid
-  grid: "content icons" / 5fr auto
-
-  li
-    h3
-      padding: 10px 15px
-
-    p
-      padding: 10px 15px
-
-  .icon-group
-    display: flex
-    flex-flow: column
-    place-self: center
-
-    i
-      text-align: center
-      place-self: center
-      padding: 3px 3px
-
-#content-wrapper
-  display: grid
-  grid: "calendar calendar" 50vh "todo motivation" 25vh "goals happiness" 25vh / 1fr 1fr
+  grid: "calendar calendar" 50vh "todo motivation" 25vh "goal happiness" 25vh / 1fr 1fr
 
 #calendar-section
   grid-area: calendar
@@ -60,8 +40,8 @@ button
 #todo-section
   grid-area: todo
 
-#goals-section
-  grid-area: goals
+#goal-section
+  grid-area: goal
 
 #motivation-section
   grid-area: motivation
