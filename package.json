@@ -6,7 +6,8 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test"
+    "test": "react-scripts test",
+    "sass": "sass ./resources/sass/style.sass:./public/css/style.css"
   },
   "keywords": [],
   "author": "",

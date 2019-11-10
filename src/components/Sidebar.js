@@ -10,9 +10,11 @@ class Sidebar extends Component {
     }
     render() {
         return (
-            <div>
-                <button type="button">Sidebar</button>
-                <div></div>
+            <div id="sidebar">
+                {/* <button type="button">Sidebar</button> */}
+                <div id="profile-img" style={{
+                    backgroundImage: "url(./img/barack_obama.jpg)"
+                }}/>
             </div>
         )
     }
