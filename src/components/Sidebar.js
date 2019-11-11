@@ -10,15 +10,14 @@ class Sidebar extends Component {
         }
     }
 
-    
-
     toggleSidemenu = () => {
-        var opposite = this.state.sidebarOpen == false ? true : false;
+        var opposite = this.state.sidebarOpen === false ? true : false;
         this.setState({ sidebarOpen:opposite });
     }
 
     render() {
-        const style = this.state.sidebarOpen ? {display: 'none'} : {};
+        const sidemenuDisplay = this.state.sidebarOpen ? {} : {display: 'none'};
+
         return (
             <div id="sidebar">
                 {/* <button type="button">Sidebar</button> */}
@@ -28,10 +27,10 @@ class Sidebar extends Component {
                 onClick={this.toggleSidemenu}
                 />
 
-                <div id="sidemenu" style={style}>
-                    <a class="sidemenu-item">Teams</a>
-                    <a class="sidemenu-item">Profile</a>
-                    <a class="sidemenu-item">Settings</a>
+                <div id="sidemenu" style={sidemenuDisplay}>
+                    <p className="sidemenu-item">Teams</p>
+                    <p className="sidemenu-item">Profile</p>
+                    <p className="sidemenu-item">Settings</p>
                 </div>
 
             </div>
@@ -39,5 +38,9 @@ class Sidebar extends Component {
         )
     }
 }
+
+Sidebar.propTypes = {
+    sidebarOpen: PropTypes.bool
+};
 
 export default Sidebar;

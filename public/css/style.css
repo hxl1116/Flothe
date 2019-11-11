@@ -14,12 +14,11 @@ body {
   width: 20vw;
   height: 100vh;
   position: absolute;
-  top: 20px;
-  left: 20px;
 }
 
 #sidemenu {
   background-color: gray;
+  height: 100vh;
 }
 
 .sidemenu-item {
@@ -28,6 +27,8 @@ body {
 }
 
 #profile-img {
+  top: 20px;
+  left: 20px;
   border: 1px solid #ddd;
   width: 50px;
   height: 50px;
