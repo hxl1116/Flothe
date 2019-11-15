@@ -98,6 +98,28 @@ body {
   padding: 10px 15px;
 }
 
+#team-section {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+}
+#team-section h3 {
+  text-align: center;
+}
+
+#team-input-group {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+}
+#team-input-group p {
+  padding: 10px 15px;
+}
+#team-input-group input {
+  margin: 5px 0;
+  padding: 10px 15px;
+}
+
 #profile-img {
   background-image: url("../img/barack_obama.jpg");
   top: 20px;
