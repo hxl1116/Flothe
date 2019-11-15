@@ -128,7 +128,7 @@ class Item extends Component {
                 </li>
                 {optionsGroup}
                 <div id="input-group" className={
-                    this.state.showEditGroup || this.state.showTimeGroup ? 'show' : 'hide'
+                    `input-group ${this.state.showEditGroup || this.state.showTimeGroup ? 'show' : 'hide'}`
                 }>
                     {editGroup}
                     {timeGroup}

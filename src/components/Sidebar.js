@@ -6,7 +6,9 @@ class Sidebar extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            showSideMenu: false
+            showSideMenu: false,
+            showTeamGroup: false,
+            teams: []
         }
     }
 
@@ -16,15 +18,59 @@ class Sidebar extends Component {
         })
     };
 
+    toggleTeamGroup = () => {
+        this.setState({
+            showTeamGroup: !this.state.showTeamGroup
+        })
+    };
+
+    addTeam = () => {
+        let name = document.querySelector('#team-name-input');
+        let members = document.querySelectorAll('input[type="email"]');
+
+        console.log(members);
+
+        if (name.value !== '') {
+            this.setState({
+                teams: this.state.teams.concat({
+                    name: name.value,
+                    members: Object.values(members).map(element => element.value)
+                })
+            })
+        }
+    };
+
     render() {
+        const inputGroup = (
+            <div id="team-input-group" className={`input-group ${this.state.showTeamGroup ? 'show' : 'hide'}`}>
+                <input type="text" id="team-name-input" placeholder="Team Name" required={true}/>
+                <br/>Invite Members<br/>
+                <input type="email" id="team-email-input-1" placeholder="Member 1"/>
+                <input type="email" id="team-email-input-1" placeholder="Member 1"/>
+                <input type="email" id="team-email-input-1" placeholder="Member 1"/>
+                <input type="email" id="team-email-input-1" placeholder="Member 1"/>
+                <button onClick={() => {
+                    this.addTeam();
+                    this.toggleTeamGroup();
+                }}>Create
+                </button>
+            </div>
+        );
+
         return (
             <div id="side-bar">
-                <button onClick={this.toggleSideMenu}>Menu</button>   {/*Replace with a hamburger menu icon*/}
+                <button onClick={this.toggleSideMenu}>Menu</button>
+                {/*Replace with a hamburger menu icon*/}
                 <ul id="side-menu" className={this.state.showSideMenu ? 'show' : 'hide'}>
                     <div id="profile-img"/>
-                    {Object.values(sideMenuItems).map(val => (
-                        <li key={`${val}-side-menu-item`}>{val}</li>
-                    ))}
+                    <div id="team-section">
+                        <h2>Teams</h2>
+                        <button onClick={this.toggleTeamGroup}>Add</button>
+                        {inputGroup}
+                    </div>
+                    {/*{Object.values(sideMenuItems).map(val => (*/}
+                    {/*    <li key={`${val}-side-menu-item`}>{val}</li>*/}
+                    {/*))}*/}
                 </ul>
             </div>
 

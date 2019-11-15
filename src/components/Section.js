@@ -9,8 +9,8 @@ class Section extends Component {
             showInputGroup: false,
             items: [
                 {
-                    name: 'Test Item',
-                    desc: 'This is a test To-Do Item'
+                    // name: 'Test Item',
+                    // desc: 'This is a test To-Do Item'
                 }
             ]
         }
