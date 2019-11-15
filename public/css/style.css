@@ -10,41 +10,27 @@ body {
   font-size: 18px;
 }
 
-#side-bar {
-  display: flex;
-  flex-flow: column nowrap;
-  width: 20vw;
-  height: 100vh;
-  position: absolute;
+.item-group {
+  display: grid;
+  grid: "content icons"/5fr auto;
 }
-#side-bar button {
-  place-self: center;
-}
-
-#side-menu {
-  display: flex;
-  flex-flow: column nowrap;
-  align-self: center;
-  align-items: center;
-  background-color: lightgrey;
-  height: 100%;
-  width: 100%;
-}
-#side-menu li {
-  text-align: center;
+.item-group li h3 {
   padding: 10px 15px;
 }
-
-#profile-img {
-  background-image: url("../img/barack_obama.jpg");
-  top: 20px;
-  left: 20px;
-  border: 1px solid #ddd;
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  padding: 20px;
-  margin: 10px 15px;
+.item-group li p {
+  padding: 10px 15px;
+}
+.item-group .options-group {
+  display: flex;
+  flex-flow: column;
+  place-self: center;
+  justify-items: center;
+}
+.item-group .options-group i {
+  text-align: center;
+  place-self: center;
+  margin: 2px 2px;
+  padding: 3px 3px;
 }
 
 .section-container {
@@ -83,27 +69,41 @@ body {
   width: 80%;
 }
 
-.item-group {
-  display: grid;
-  grid: "content icons"/5fr auto;
-}
-.item-group li h3 {
-  padding: 10px 15px;
-}
-.item-group li p {
-  padding: 10px 15px;
-}
-.item-group .options-group {
+#side-bar {
   display: flex;
-  flex-flow: column;
-  place-self: center;
-  justify-items: center;
+  flex-flow: column nowrap;
+  width: 15vw;
+  height: 100vh;
+  position: absolute;
 }
-.item-group .options-group i {
-  text-align: center;
+#side-bar button {
   place-self: center;
-  margin: 2px 2px;
-  padding: 3px 3px;
+}
+
+#side-menu {
+  display: flex;
+  flex-flow: column nowrap;
+  align-self: center;
+  align-items: center;
+  background-color: lightgrey;
+  height: 100%;
+  width: 100%;
+}
+#side-menu li {
+  text-align: center;
+  padding: 10px 15px;
+}
+
+#profile-img {
+  background-image: url("../img/barack_obama.jpg");
+  top: 20px;
+  left: 20px;
+  border: 1px solid #ddd;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  padding: 20px;
+  margin: 10px 15px;
 }
 
 input {
