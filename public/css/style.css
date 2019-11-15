@@ -12,7 +12,7 @@ body {
 
 .item-group {
   display: grid;
-  grid: "content icons"/5fr auto;
+  grid: "content icons" "input-group icons"/5fr auto;
 }
 .item-group li h3 {
   padding: 10px 15px;
@@ -20,11 +20,15 @@ body {
 .item-group li p {
   padding: 10px 15px;
 }
+.item-group #input-group {
+  grid-area: input-group;
+}
 .item-group .options-group {
   display: flex;
   flex-flow: column;
   place-self: center;
   justify-items: center;
+  grid-area: icons;
 }
 .item-group .options-group i {
   text-align: center;

@@ -7,7 +7,12 @@ class Section extends Component {
         super(props);
         this.state = {
             showInputGroup: false,
-            items: []
+            items: [
+                {
+                    name: 'Test Item',
+                    desc: 'This is a test To-Do Item'
+                }
+            ]
         }
     }
 
@@ -29,12 +34,14 @@ class Section extends Component {
         }
     };
 
+    // todo - modify to account for transferred tasks
     updateItem = (idx, update) => {
         this.setState({
             items: this.state.items.map((item, jdx) => idx === jdx ? update : item)
         })
     };
 
+    // todo - modify to account for transferred tasks
     deleteItem = (idx) => {
         this.setState({
             items: this.state.items.filter((item, jdx) => {
@@ -46,22 +53,55 @@ class Section extends Component {
         })
     };
 
+    scheduleItem = (idx, update) => {
+        let task = this.state.items.filter((item, jdx) => {
+            return idx === jdx
+        });
+
+        task[0].start = update.start;
+        task[0].end = update.end;
+
+        this.props.transferTaskToEvent(task)
+    };
+
     render() {
         const sectionHeader = (
             <div className="section-header">
                 <h2>{this.props.name}</h2>
                 <i className={`fas fa-plus fa-lg ${this.state.showInputGroup ? 'hide' : 'show'}`}
-                   onClick={this.toggleAddInput}/>
+                   onClick={this.toggleAddInput}
+                />
             </div>
         );
 
         const sectionList = (
             <ol id={`${this.props.id}-section-list`} className="section-list">
-                {Object.values(this.state.items).map(((val, idx) => (
-                    <Item key={`${this.props.name}-task-${idx}`} section={this.props.id} idx={idx}
-                          name={val.name} desc={val.desc} updateSelf={(idx, update) => this.updateItem(idx, update)}
-                          deleteSelf={(idx) => this.deleteItem(idx)}/>
-                )))}
+                {Object.values(this.state.items).map((val, idx) => (
+                    <Item key={`${this.props.name}-task-${idx}`}
+                          section={this.props.id}
+                          idx={idx}
+                          name={val.name}
+                          desc={val.desc}
+                          updateItem={(idx, update) => this.updateItem(idx, update)}
+                          deleteItem={(idx) => this.deleteItem(idx)}
+                          scheduleItem={(idx, update) => this.scheduleItem(idx, update)}
+                    />
+                ))}
+                {this.props.timed ? <>
+                    {Object.values(this.props.transferredTasks).map((val, idx) => (
+                        <Item key={`${this.props.name}-transferred-task-${idx}`}
+                              section={this.props.id}
+                              idx={idx}
+                              name={val.name}
+                              desc={val.desc}
+                              start={val.start}
+                              end={val.end}
+                              updateItem={(idx, update) => this.updateItem(idx, update)}
+                              deleteItem={(idx) => this.deleteItem(idx)}
+                              scheduleItem={(idx, update) => this.scheduleItem(idx, update)}
+                        />
+                    ))}
+                </> : <></>}
             </ol>
         );
 
@@ -71,14 +111,19 @@ class Section extends Component {
                 <input type="text" id={`${this.props.name}-desc-input`} placeholder="Description"/>
                 {this.props.timed ? (
                     <>
-                        <input type="text" id={`${this.props.name}-start-input`} defaultValue={'Current time'} placeholder={'Start time'}/>
+                        <input type="text"
+                               id={`${this.props.name}-start-input`}
+                               defaultValue={'Current time'}
+                               placeholder={'Start time'}
+                        />
                         <input type="text" id={`${this.props}-end-input`} placeholder={'End time'}/>
                     </>
                 ) : (<></>)}
                 <button onClick={() => {
                     this.addItem();
                     this.toggleAddInput()
-                }}>Add
+                }}>
+                    Add
                 </button>
             </div>
         );
@@ -96,7 +141,9 @@ class Section extends Component {
 Section.propTypes = {
     id: PropTypes.string,
     name: PropTypes.string,
-    timed: PropTypes.bool
+    timed: PropTypes.bool,
+    transferredTasks: PropTypes.array,
+    transferTaskToEvent: PropTypes.func
 };
 
 export default Section

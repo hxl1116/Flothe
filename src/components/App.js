@@ -12,21 +12,40 @@ const sections = {
 class App extends Component {
     constructor(props) {
         super(props);
+        this.state = {
+            transferredTasks: []
+        }
     }
+
+    transferTaskToEvent = (task) => {
+        this.setState({
+            transferredTasks: this.state.transferredTasks.concat(task)
+        }, () => {
+            console.log(task)
+        })
+    };
 
     render() {
         return (
             <>
                 <Sidebar/>
                 <div id="sections-wrapper" className="day-layout">
-                    <Section id={'calendar'} name={'Calendar'} timed={true}/>
-                    <Section id={'todo'} name={'ToDo'}/>
-                    <Section id={'goal'} name={'Goal'}/>
-                    <Section id={'motivation'} name={'Motivation'}/>
-                    <Section id={'happiness'} name={'Happiness'}/>
-                    {/* {Object.values(sections).map(section => (*/}
-                    {/*    <Section key={`${section.id}-section`} id={section.id} name={section.name}/>*/}
-                    {/*))} */}
+                    <Section id={'calendar'} name={'Calendar'} timed={true}
+                             transferredTasks={this.state.transferredTasks}
+                    />
+                    <Section id={'todo'} name={'ToDo'}
+                             transferTaskToEvent={(task) => this.transferTaskToEvent(task)}
+                             transferredTasks={this.state.transferredTasks}
+                    />
+                    <Section id={'goal'} name={'Goal'}
+                             transferredTasks={this.state.transferredTasks}
+                    />
+                    <Section id={'motivation'} name={'Motivation'}
+                             transferredTasks={this.state.transferredTasks}
+                    />
+                    <Section id={'happiness'} name={'Happiness'}
+                             transferredTasks={this.state.transferredTasks}
+                    />
                 </div>
             </>
         )

@@ -1,7 +1,6 @@
 .item-group
   display: grid
-  grid: "content icons" / 5fr auto
-
+  grid: "content icons" "input-group icons" / 5fr auto
   li
     h3
       padding: 10px 15px
@@ -9,11 +8,15 @@
     p
       padding: 10px 15px
 
+  #input-group
+    grid-area: input-group
+
   .options-group
     display: flex
     flex-flow: column
     place-self: center
     justify-items: center
+    grid-area: icons
 
     i
       text-align: center
