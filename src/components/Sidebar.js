@@ -1,46 +1,35 @@
 import React, {Component} from 'react'
-import PropTypes from 'prop-types'
+
+const sideMenuItems = ['Teams', 'Profile', 'Settings'];
 
 class Sidebar extends Component {
-    
     constructor(props) {
         super(props);
         this.state = {
-            sidebarOpen:false
+            showSideMenu: false
         }
     }
 
-    toggleSidemenu = () => {
-        var opposite = this.state.sidebarOpen === false ? true : false;
-        this.setState({ sidebarOpen:opposite });
-    }
+    toggleSideMenu = () => {
+        this.setState({
+            showSideMenu: !this.state.showSideMenu
+        })
+    };
 
     render() {
-        const sidemenuDisplay = this.state.sidebarOpen ? {} : {display: 'none'};
-
         return (
-            <div id="sidebar">
-                {/* <button type="button">Sidebar</button> */}
-                <div id="profile-img" style={{
-                    backgroundImage: "url(./img/barack_obama.jpg)"
-                }}
-                onClick={this.toggleSidemenu}
-                />
-
-                <div id="sidemenu" style={sidemenuDisplay}>
-                    <p className="sidemenu-item">Teams</p>
-                    <p className="sidemenu-item">Profile</p>
-                    <p className="sidemenu-item">Settings</p>
-                </div>
-
+            <div id="side-bar">
+                <button onClick={this.toggleSideMenu}>Menu</button>   {/*Replace with a hamburger menu icon*/}
+                <ul id="side-menu" className={this.state.showSideMenu ? 'show' : 'hide'}>
+                    <div id="profile-img"/>
+                    {Object.values(sideMenuItems).map(val => (
+                        <li key={`${val}-side-menu-item`}>{val}</li>
+                    ))}
+                </ul>
             </div>
-            
+
         )
     }
 }
-
-Sidebar.propTypes = {
-    sidebarOpen: PropTypes.bool
-};
 
 export default Sidebar;
