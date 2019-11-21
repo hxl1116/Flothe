@@ -2,16 +2,18 @@ import React, {Component, Fragment} from 'react';
 import PropTypes from 'prop-types';
 import Item from "./Item";
 
+const testItem = {
+    name: 'Test Item',
+    desc: 'This is a test To-Do Item'
+};
+
 class Section extends Component {
     constructor(props) {
         super(props);
         this.state = {
             showInputGroup: false,
             items: [
-                // {
-                //     name: 'Test Item',
-                //     desc: 'This is a test To-Do Item'
-                // }
+                // testItem
             ]
         }
     }
