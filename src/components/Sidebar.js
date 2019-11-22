@@ -62,8 +62,8 @@ class Sidebar extends Component {
 
         return (
             <div id="side-bar">
-                <button onClick={this.toggleSideMenu}>Menu</button>
-                {/*Replace with a hamburger menu icon*/}
+                {/*<button onClick={this.toggleSideMenu}>Menu</button>*/}
+                <i className="material-icons md-36" onClick={this.toggleSideMenu}>dehaze</i>
                 <ul id="side-menu" className={this.state.showSideMenu ? 'show' : 'hide'}>
                     <div id="profile-img"/>
                     <div id="team-section">

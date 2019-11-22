@@ -86,8 +86,10 @@ body {
   height: 100vh;
   position: absolute;
 }
-#side-bar button {
-  place-self: center;
+#side-bar i {
+  padding: 20px;
+  padding-bottom: 5px;
+  font-size: 30px;
 }
 
 #side-menu {
