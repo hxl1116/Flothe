@@ -13,6 +13,7 @@ body {
 .item-group {
   display: grid;
   grid: "content icons" "input-group icons"/5fr auto;
+  margin: 2px;
   background-color: #60CF95;
   border-radius: 20px;
 }
