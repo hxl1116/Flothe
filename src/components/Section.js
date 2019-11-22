@@ -13,7 +13,13 @@ class Section extends Component {
         this.state = {
             showInputGroup: false,
             items: [
-                // testItem
+                testItem,
+                testItem,
+                testItem,
+                testItem,
+                testItem,
+                testItem,
+                testItem,
             ]
         }
     }
