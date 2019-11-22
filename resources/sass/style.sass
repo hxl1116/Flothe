@@ -11,6 +11,11 @@ input
   border-bottom: 2px solid grey
   outline: none
 
+
+body
+  font-size: 18px
+  background: linear-gradient(90deg, lightsteelblue 50%, antiquewhite 50%)
+
 button
   background: none
   font-family: 'Montserrat', sans-serif
@@ -33,10 +38,13 @@ button
 
 #sections-wrapper
   display: grid
-  grid: "calendar calendar" 50vh "todo motivation" 25vh "goal happiness" 25vh / 1fr 1fr
+  grid: "calender today" 50vh "todo motivation" 25vh "goal happiness" 25vh / 1fr 1fr
 
-#calendar-section
-  grid-area: calendar
+#today-section
+  grid-area: today
+
+#calender-section
+  grid-area: calender
 
 #todo-section
   grid-area: todo

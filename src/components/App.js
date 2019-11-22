@@ -30,14 +30,17 @@ class App extends Component {
             <>
                 <Sidebar/>
                 <div id="sections-wrapper" className="day-layout">
-                    <Section id={'calendar'} name={'Calendar'} timed={true}
+                    <Section id ={'calender'} name ={"Calender"} timed={true}
+                             transferredTasks={this.state.transferredTasks}
+                    />
+                    <Section id={'today'} name={'Today'} timed={true}
                              transferredTasks={this.state.transferredTasks}
                     />
                     <Section id={'todo'} name={'ToDo'}
                              transferTaskToEvent={(task) => this.transferTaskToEvent(task)}
                              transferredTasks={this.state.transferredTasks}
                     />
-                    <Section id={'goal'} name={'Goal'}
+                    <Section id={'goal'} name={'Goal' }
                              transferredTasks={this.state.transferredTasks}
                     />
                     <Section id={'motivation'} name={'Motivation'}
