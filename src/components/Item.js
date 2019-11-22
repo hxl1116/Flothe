@@ -122,9 +122,11 @@ class Item extends Component {
             <div className="item-group">
                 <li>
                     <h3>{this.props.name}</h3>
-                    <p>{this.props.desc}</p>
-                    <p>{this.props.start}</p>
-                    <p>{this.props.end}</p>
+                    <div className="item-content">
+                        <p>{this.props.desc}</p>
+                        <p>{this.props.start}</p>
+                        <p>{this.props.end}</p>
+                    </div>
                 </li>
                 {optionsGroup}
                 <div id="input-group" className={
