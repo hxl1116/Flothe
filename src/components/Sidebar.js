@@ -29,6 +29,8 @@ class Sidebar extends Component {
         let name = document.querySelector('#team-name-input');
         let members = document.querySelectorAll('input[type="email"]');
 
+        members = Object.values(members).filter(element => element.value !== '');
+
         console.log(members);
 
         if (name.value !== '') {
