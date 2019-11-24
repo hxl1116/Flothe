@@ -64,28 +64,28 @@ class Item extends Component {
             <div className="options-group">
                 {this.state.showOptions ? (
                     <>
-                        <i className="fas fa-pen-square fa-lg" onClick={() => {
+                        <i className="material-icons" onClick={() => {
                             if (this.state.showTimeGroup) this.toggleTimeGroup();
                             this.toggleEditGroup();
                             this.toggleOptionsGroup();
-                        }}/>
+                        }}>create</i>
                         {/* todo: add onClick functionality */}
-                        <i className="fas fa-calendar-plus fa-lg"/>
-                        <i className="fas fa-trash-alt fa-lg" onClick={() => {
-                            this.deleteSelf();
-                            this.toggleOptionsGroup();
-                        }}/>
                         {this.props.section === 'todo' ?
-                            <button onClick={() => {
+                            <i className="material-icons" onClick={() => {
                                 if (this.state.showEditGroup) this.toggleEditGroup();
                                 this.toggleTimeGroup();
                                 this.toggleOptionsGroup();
-                            }}>Schedule</button> : <></>}
+                            }}>calendar_today</i>: <></>
+                        }
+                        <i className="material-icons" onClick={() => {
+                            this.deleteSelf();
+                            this.toggleOptionsGroup();
+                        }}>delete</i>
                     </>
                 ) : (
                     <>
                         {/* todo: add onClick functionality */}
-                        <i className="fas fa-ellipsis-v fa-lg" onClick={this.toggleOptionsGroup}/>
+                        <i className="material-icons" onClick={this.toggleOptionsGroup}>more_vert</i>
                     </>
                 )}
             </div>

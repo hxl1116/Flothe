@@ -13,13 +13,7 @@ class Section extends Component {
         this.state = {
             showInputGroup: false,
             items: [
-                testItem,
-                testItem,
-                testItem,
-                testItem,
-                testItem,
-                testItem,
-                testItem,
+                // testItem
             ]
         }
     }
@@ -76,9 +70,9 @@ class Section extends Component {
         const sectionHeader = (
             <div className="section-header">
                 <h2>{this.props.name}</h2>
-                <i className={`fas fa-plus fa-lg ${this.state.showInputGroup ? 'hide' : 'show'}`}
-                   onClick={this.toggleAddInput}
-                />
+                <i className="material-icons" onClick={this.toggleAddInput}>
+                    {this.state.showInputGroup ? 'remove' : 'add'}
+                </i>
             </div>
         );
 

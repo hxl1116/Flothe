@@ -86,10 +86,8 @@ body {
   height: 100vh;
   position: absolute;
 }
-#side-bar i {
-  padding: 20px;
-  padding-bottom: 5px;
-  font-size: 30px;
+#side-bar button {
+  place-self: center;
 }
 
 #side-menu {
@@ -148,6 +146,11 @@ input {
   outline: none;
 }
 
+body {
+  font-size: 18px;
+  background: linear-gradient(90deg, lightsteelblue 50%, antiquewhite 50%);
+}
+
 button {
   background: none;
   font-family: "Montserrat", sans-serif;
@@ -173,11 +176,15 @@ button:hover {
 
 #sections-wrapper {
   display: grid;
-  grid: "calendar calendar" 50vh "todo motivation" 25vh "goal happiness" 25vh/1fr 1fr;
+  grid: "calender today" 50vh "todo motivation" 25vh "goal happiness" 25vh/1fr 1fr;
 }
 
-#calendar-section {
-  grid-area: calendar;
+#today-section {
+  grid-area: today;
+}
+
+#calender-section {
+  grid-area: calender;
 }
 
 #todo-section {
