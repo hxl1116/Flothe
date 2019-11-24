@@ -124,8 +124,12 @@ class Item extends Component {
                     <h3>{this.props.name}</h3>
                     <div className="item-content">
                         <p>{this.props.desc}</p>
-                        <p>{this.props.start}</p>
-                        <p>{this.props.end}</p>
+                        {this.props.start ? (
+                            <p>{this.props.start}</p>
+                        ) : <></>}
+                        {this.props.end ? (
+                            <p>{this.props.end}</p>
+                        ) : <></>}
                     </div>
                 </li>
                 {optionsGroup}

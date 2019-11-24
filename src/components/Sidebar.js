@@ -63,7 +63,7 @@ class Sidebar extends Component {
         return (
             <div id="side-bar">
                 {/* Add pointer mouse-event to icon*/}
-                <i className="material-icons md-36" onClick={this.toggleSideMenu}>dehaze</i>
+                <i id="side-menu-btn" className="material-icons" onClick={this.toggleSideMenu}>dehaze</i>
                 <ul id="side-menu" className={this.state.showSideMenu ? 'show' : 'hide'}>
                     <div id="profile-img"/>
                     <div id="team-section">

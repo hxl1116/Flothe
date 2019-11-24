@@ -8,7 +8,7 @@
 
 body {
   font-size: 18px;
-  background: linear-gradient(90deg, lightsteelblue 50%, antiquewhite 50%);
+  background: linear-gradient(90deg, #add8e6 50%, #faebd7 50%);
 }
 
 .material-icons {
@@ -17,8 +17,7 @@ body {
 }
 
 .item-group {
-  display: grid;
-  grid: "content icons" "input-group icons"/5fr auto;
+  position: relative;
   margin: 2px;
   background-color: #60CF95;
   border-radius: 20px;
@@ -33,15 +32,15 @@ body {
 .item-group li p {
   padding: 10px 15px;
 }
-.item-group #input-group {
-  grid-area: input-group;
-}
 .item-group .options-group {
   display: flex;
   flex-flow: column;
+  position: absolute;
   place-self: center;
   justify-items: center;
-  grid-area: icons;
+  top: 50%;
+  right: 10px;
+  transform: translate(0, -50%);
 }
 .item-group .options-group i {
   text-align: center;
@@ -74,6 +73,7 @@ body {
 .section-list {
   width: 80%;
   max-height: 200px;
+  align-self: center;
   overflow: auto;
 }
 
@@ -91,6 +91,11 @@ body {
   width: 15vw;
   height: 100vh;
   position: absolute;
+}
+#side-bar #side-menu-btn {
+  margin: 10px 15px;
+  position: fixed;
+  z-index: 2;
 }
 #side-bar button {
   place-self: center;

@@ -1,11 +1,9 @@
 .item-group
-  display: grid
-  grid: "content icons" "input-group icons" / 5fr auto
+  position: relative
   margin: 2px
   background-color: #60CF95
   border-radius: 20px
   li
-
     .item-content
       background-color: #53b582
       border-radius: 20px
@@ -16,15 +14,15 @@
     p
       padding: 10px 15px
 
-  #input-group
-    grid-area: input-group
-
   .options-group
     display: flex
     flex-flow: column
+    position: absolute
     place-self: center
     justify-items: center
-    grid-area: icons
+    top: 50%
+    right: 10px
+    transform: translate(0, -50%)
 
     i
       text-align: center
