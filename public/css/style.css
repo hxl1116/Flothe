@@ -17,8 +17,11 @@ body {
 }
 
 .item-group {
-  background-color: #53b582;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-between;
   position: relative;
+  background-color: #53b582;
   margin: 2px;
   min-height: 125px;
   border-radius: 20px;
