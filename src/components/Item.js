@@ -75,7 +75,7 @@ class Item extends Component {
                                 if (this.state.showEditGroup) this.toggleEditGroup();
                                 this.toggleTimeGroup();
                                 this.toggleOptionsGroup();
-                            }}>calendar_today</i>: <></>
+                            }}>calendar_today</i> : <></>
                         }
                         <i className="material-icons" onClick={() => {
                             this.deleteSelf();
@@ -119,27 +119,27 @@ class Item extends Component {
         );
 
         return (
-            <div className="item-group">
-                <li>
-                    <h3>{this.props.name}</h3>
-                    <div className="item-content">
-                        <p>{this.props.desc}</p>
-                        {this.props.start ? (
-                            <p>{this.props.start}</p>
-                        ) : <></>}
-                        {this.props.end ? (
-                            <p>{this.props.end}</p>
-                        ) : <></>}
-                    </div>
-                </li>
+            <li className="item-group">
+                <h3>{this.props.name}</h3>
+                <div className="item-content">
+                    <p>{this.props.desc}</p>
+                    {this.props.start ? (
+                        <p>{this.props.start}</p>
+                    ) : <></>}
+                    {this.props.end ? (
+                        <p>{this.props.end}</p>
+                    ) : <></>}
+                </div>
                 {optionsGroup}
+
+                {/* Migrate to Section */}
                 <div id="input-group" className={
                     `input-group ${this.state.showEditGroup || this.state.showTimeGroup ? 'show' : 'hide'}`
                 }>
                     {editGroup}
                     {timeGroup}
                 </div>
-            </div>
+            </li>
         );
     }
 }

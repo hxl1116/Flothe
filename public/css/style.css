@@ -17,19 +17,19 @@ body {
 }
 
 .item-group {
+  background-color: #53b582;
   position: relative;
   margin: 2px;
+  min-height: 125px;
+  border-radius: 20px;
+  overflow: hidden;
+}
+.item-group h3 {
   background-color: #60CF95;
-  border-radius: 20px;
-}
-.item-group li .item-content {
-  background-color: #53b582;
-  border-radius: 20px;
-}
-.item-group li h3 {
   padding: 10px 15px;
+  border-radius: 20px;
 }
-.item-group li p {
+.item-group p {
   padding: 10px 15px;
 }
 .item-group .options-group {
@@ -38,9 +38,8 @@ body {
   position: absolute;
   place-self: center;
   justify-items: center;
-  top: 50%;
+  top: 5px;
   right: 10px;
-  transform: translate(0, -50%);
 }
 .item-group .options-group i {
   text-align: center;

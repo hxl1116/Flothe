@@ -1,18 +1,21 @@
+$item-primary: #60CF95
+$item-secondary: #53b582
+
 .item-group
+  background-color: $item-secondary
   position: relative
   margin: 2px
-  background-color: #60CF95
+  min-height: 125px
   border-radius: 20px
-  li
-    .item-content
-      background-color: #53b582
-      border-radius: 20px
+  overflow: hidden
 
-    h3
-      padding: 10px 15px
+  h3
+    background-color: $item-primary
+    padding: 10px 15px
+    border-radius: 20px
 
-    p
-      padding: 10px 15px
+  p
+    padding: 10px 15px
 
   .options-group
     display: flex
@@ -20,9 +23,9 @@
     position: absolute
     place-self: center
     justify-items: center
-    top: 50%
+    top: 5px
     right: 10px
-    transform: translate(0, -50%)
+    //transform: translate(0, -50%)
 
     i
       text-align: center
