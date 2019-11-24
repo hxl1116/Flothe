@@ -1,4 +1,4 @@
-import React, {Component} from 'react'
+import React, {Component, Fragment} from 'react'
 import PropTypes from 'prop-types'
 
 class Item extends Component {
@@ -93,7 +93,7 @@ class Item extends Component {
 
         const editGroup = (
             <div id={`${this.props.section}-edit-group`}
-                 className={`section-input-group ${this.state.showEditGroup ? 'show' : 'hide'}`}>
+                 className={`input-group ${this.state.showEditGroup ? 'show' : 'hide'}`}>
                 <input type="text" id={`${this.props.section}-name-edit`} placeholder="Name"/>
                 <input type="text" id={`${this.props.section}-desc-edit`} placeholder="Description"/>
                 <button onClick={() => {
@@ -119,27 +119,28 @@ class Item extends Component {
         );
 
         return (
-            <li className="item-group">
-                <h3>{this.props.name}</h3>
-                <div className="item-content">
-                    <p>{this.props.desc}</p>
-                    {this.props.start ? (
-                        <p>{this.props.start}</p>
-                    ) : <></>}
-                    {this.props.end ? (
-                        <p>{this.props.end}</p>
-                    ) : <></>}
-                </div>
-                {optionsGroup}
-
+            <Fragment>
+                <li className="item-group">
+                    <h3>{this.props.name}</h3>
+                    <div className="item-content">
+                        <p>{this.props.desc}</p>
+                        {this.props.start ? (
+                            <p>{this.props.start}</p>
+                        ) : <></>}
+                        {this.props.end ? (
+                            <p>{this.props.end}</p>
+                        ) : <></>}
+                    </div>
+                    {optionsGroup}
+                </li>
                 {/* Migrate to Section */}
-                <div id="input-group" className={
+                <div className={
                     `input-group ${this.state.showEditGroup || this.state.showTimeGroup ? 'show' : 'hide'}`
                 }>
                     {editGroup}
                     {timeGroup}
                 </div>
-            </li>
+            </Fragment>
         );
     }
 }

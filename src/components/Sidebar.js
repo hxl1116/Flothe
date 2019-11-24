@@ -1,4 +1,4 @@
-import React, {Component} from 'react'
+import React, {Component, Fragment} from 'react'
 import MenuItem from "./MenuItem";
 
 const sideMenuItems = ['Profile', 'Settings'];
@@ -8,7 +8,7 @@ class Sidebar extends Component {
         super(props);
         this.state = {
             showSideMenu: false,
-            showTeamGroup: false,
+            showTeamInputGroup: false,
             teams: []
         }
     }
@@ -21,7 +21,7 @@ class Sidebar extends Component {
 
     toggleTeamGroup = () => {
         this.setState({
-            showTeamGroup: !this.state.showTeamGroup
+            showTeamInputGroup: !this.state.showTeamInputGroup
         })
     };
 
@@ -44,8 +44,17 @@ class Sidebar extends Component {
     };
 
     render() {
+        const menuSectionHeader = (name) => (
+            <div className="section-header">
+                <h2>{name}</h2>
+                <i className="material-icons" onClick={this.toggleTeamGroup}>
+                    {this.state.showTeamInputGroup ? 'remove' : 'add'}
+                </i>
+            </div>
+        );
+
         const inputGroup = (
-            <div id="team-input-group" className={`input-group ${this.state.showTeamGroup ? 'show' : 'hide'}`}>
+            <div id="team-input-group" className={`input-group ${this.state.showTeamInputGroup ? 'show' : 'hide'}`}>
                 <input type="text" id="team-name-input" placeholder="Team Name" required={true}/>
                 <p>Invite Members</p>
                 <input type="email" id="team-email-input-1" placeholder="Member 1"/>
@@ -61,27 +70,26 @@ class Sidebar extends Component {
         );
 
         return (
-            <div id="side-bar">
-                {/* Add pointer mouse-event to icon*/}
+            <Fragment>
                 <i id="side-menu-btn" className="material-icons" onClick={this.toggleSideMenu}>dehaze</i>
-                <ul id="side-menu" className={this.state.showSideMenu ? 'show' : 'hide'}>
-                    <div id="profile-img"/>
-                    <div id="team-section">
-                        <h2>Teams</h2>
-                        <button onClick={this.toggleTeamGroup}>Add</button>
-                        <ol>
-                            {Object.values(this.state.teams).map((val, idx) => (
-                                <MenuItem key={`team-${idx}`} idx={idx} name={val.name} members={val.members}/>
-                            ))}
-                        </ol>
-                        {inputGroup}
-                    </div>
-                    {Object.values(sideMenuItems).map(val => (
-                        <li key={`${val}-side-menu-item`}><h2>{val}</h2></li>
-                    ))}
-                </ul>
-            </div>
-
+                <div id="side-bar" className={this.state.showSideMenu ? 'show' : 'hide'}>
+                    <ul id="side-menu">
+                        <div id="profile-img"/>
+                        <div id="team-section">
+                            {menuSectionHeader('Teams')}
+                            <ol>
+                                {Object.values(this.state.teams).map((val, idx) => (
+                                    <MenuItem key={`team-${idx}`} idx={idx} name={val.name} members={val.members}/>
+                                ))}
+                            </ol>
+                            {inputGroup}
+                        </div>
+                        {Object.values(sideMenuItems).map(val => (
+                            <li key={`${val}-side-menu-item`}><h2>{val}</h2></li>
+                        ))}
+                    </ul>
+                </div>
+            </Fragment>
         )
     }
 }

@@ -19,7 +19,7 @@ body {
 .item-group {
   display: flex;
   flex-flow: column nowrap;
-  justify-content: space-between;
+  justify-content: flex-start;
   position: relative;
   background-color: #53b582;
   margin: 2px;
@@ -35,7 +35,8 @@ body {
 .item-group p {
   padding: 10px 15px;
 }
-.item-group .options-group {
+
+.options-group {
   display: flex;
   flex-flow: column;
   position: absolute;
@@ -44,11 +45,22 @@ body {
   top: 5px;
   right: 10px;
 }
-.item-group .options-group i {
+.options-group i {
   text-align: center;
   place-self: center;
   margin: 2px 2px;
   padding: 3px 3px;
+}
+
+.input-group {
+  width: 100%;
+}
+.input-group input {
+  width: 100%;
+  padding: 10px 15px;
+}
+.input-group button {
+  width: 100%;
 }
 
 .section-container {
@@ -82,9 +94,21 @@ body {
 .section-input-group {
   display: flex;
   flex-flow: column nowrap;
-  place-self: center;
-  align-items: center;
+  align-self: center;
   width: 80%;
+}
+.section-input-group input {
+  width: 100%;
+  padding: 10px 15px;
+}
+.section-input-group button {
+  width: 100%;
+}
+
+#side-menu-btn {
+  margin: 10px 15px;
+  position: fixed;
+  z-index: 3;
 }
 
 #side-bar {
@@ -94,11 +118,6 @@ body {
   width: 15vw;
   height: 100vh;
   z-index: 2;
-}
-#side-bar #side-menu-btn {
-  margin: 10px 15px;
-  position: fixed;
-  z-index: 3;
 }
 #side-bar button {
   place-self: center;
@@ -180,6 +199,7 @@ button:hover {
 .hide {
   height: 0;
   opacity: 0;
+  width: 0 !important;
   overflow: hidden;
 }
 
