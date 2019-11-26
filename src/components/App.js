@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import Section from "./Section";
 import Sidebar from "./Sidebar";
+import Calendar from "./Calendar";
 
 const sections = {
     'To-Do': {id: 'todo', name: 'To-Do'},
@@ -30,9 +31,10 @@ class App extends Component {
             <>
                 <Sidebar/>
                 <div id="sections-wrapper" className="day-layout">
-                    <Section id ={'calender'} name ={"Calendar"} timed={true}
-                             transferredTasks={this.state.transferredTasks}
-                    />
+                    <Calendar id="calendar"/>
+                    {/*<Section id ={'calender'} name ={"Calendar"} timed={true}*/}
+                    {/*         transferredTasks={this.state.transferredTasks}*/}
+                    {/*/>*/}
                     <Section id={'today'} name={'Today'} timed={true}
                              transferredTasks={this.state.transferredTasks}
                     />
