@@ -1,4 +1,4 @@
-import React, {Component, Fragment} from 'react'
+import React, {Component} from 'react'
 import PropTypes from 'prop-types'
 
 class Item extends Component {
@@ -119,7 +119,7 @@ class Item extends Component {
         );
 
         return (
-            <Fragment>
+            <>
                 <li className="item-group">
                     <h3>{this.props.name}</h3>
                     <div className="item-content">
@@ -140,7 +140,7 @@ class Item extends Component {
                     {editGroup}
                     {timeGroup}
                 </div>
-            </Fragment>
+            </>
         );
     }
 }

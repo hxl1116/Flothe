@@ -29,11 +29,13 @@ class Sidebar extends Component {
         let name = document.querySelector('#team-name-input');
         let members = document.querySelectorAll('input[type="email"]');
 
+        // noinspection JSCheckFunctionSignatures
         members = Object.values(members).filter(element => element.value !== '');
 
         console.log(members);
 
         if (name.value !== '') {
+            // noinspection JSCheckFunctionSignatures
             this.setState({
                 teams: this.state.teams.concat({
                     name: name.value,

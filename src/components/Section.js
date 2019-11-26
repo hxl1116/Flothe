@@ -1,4 +1,4 @@
-import React, {Component, Fragment} from 'react';
+import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import Item from "./Item";
 
@@ -13,7 +13,7 @@ class Section extends Component {
         this.state = {
             showInputGroup: false,
             items: [
-                testItem
+                // testItem
             ]
         }
     }
