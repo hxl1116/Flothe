@@ -7,13 +7,25 @@
 }
 
 body {
-  font-size: 30px;
+  font-size: 18px;
   background: linear-gradient(90deg, #add8e6 50%, #faebd7 50%);
 }
 
 .material-icons {
   font-size: 30px;
   cursor: pointer;
+}
+
+#days-group {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.calendar-day p {
+  max-width: 2vw;
+  max-height: 2vh;
+  margin: 0;
+  padding: 0;
 }
 
 .item-group {

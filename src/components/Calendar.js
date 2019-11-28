@@ -68,7 +68,7 @@ class Calendar extends Component {
         );
 
         const day = (date) => (
-            <div key={`day-${date}`} id={`day-${date}`}>
+            <div key={`day-${date}`} id={`day-${date}`} className="calendar-day">
                 <p>{date}</p>
             </div>
         );
