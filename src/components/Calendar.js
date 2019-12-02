@@ -52,6 +52,13 @@ const months = [
     }
 ];
 
+const gridPos = (col, row) => {
+    return {
+        gridColumn: `${col}`,
+        gridRow: `${row}`
+    }
+};
+
 class Calendar extends Component {
     constructor(props) {
         super(props);
@@ -69,13 +76,13 @@ class Calendar extends Component {
 
         const day = (date) => (
             <div key={`day-${date}`} id={`day-${date}`} className="calendar-day">
-                <p>{date}</p>
+                <p style={gridPos(date / 7, date / 4)}>{date + 1}</p>
             </div>
         );
 
         const days = [];
         for (let idx = 0; idx < months[this.state.currentMonth].days; idx++) {
-            idx % 7 === 0 ? days.push(day(idx), <br/>) : days.push(day(idx))
+            days.push(day(idx))
         }
 
         const monthView = (

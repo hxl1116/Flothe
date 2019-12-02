@@ -1,11 +1,18 @@
-// todo - Display Day elements in a calendar grid
+// todo - Display Day elements in a calendar 4x7 grid
 #days-group
-  display: flex
-  flex-flow: row wrap
+  display: grid
+  // todo - generate grid layout
+  grid-template-columns: 7fr 7fr 7fr 7fr 7fr 7fr 7fr
+  grid-template-rows: 4fr 4fr 4fr 4fr
+  grid-auto-flow: row
+  place-self: center
+  margin: 10px 15px
 
 .calendar-day
+  width: 75px
+  height: 75px
+
   p
-    max-width: 2vw
-    max-height: 2vh
+    text-align: center
     margin: 0
     padding: 0
