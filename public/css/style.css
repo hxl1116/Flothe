@@ -16,6 +16,12 @@ body {
   cursor: pointer;
 }
 
+#calendar-header {
+  display: flex !important;
+  flex-flow: row nowrap;
+  align-content: space-between;
+}
+
 #days-group {
   display: grid;
   grid-template-columns: 7fr 7fr 7fr 7fr 7fr 7fr 7fr;

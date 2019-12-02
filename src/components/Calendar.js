@@ -52,13 +52,6 @@ const months = [
     }
 ];
 
-const gridPos = (col, row) => {
-    return {
-        gridColumn: `${col}`,
-        gridRow: `${row}`
-    }
-};
-
 class Calendar extends Component {
     constructor(props) {
         super(props);
@@ -67,20 +60,37 @@ class Calendar extends Component {
         }
     }
 
+    incrementMonth = () => {
+        this.setState({
+            currentMonth: this.state.currentMonth === 11 ? 0 : this.state.currentMonth + 1
+        })
+    };
+
+    decrementMonth = () => {
+        this.setState({
+            currentMonth: this.state.currentMonth === 0 ? 11 : this.state.currentMonth - 1
+        })
+    };
+
     render() {
+        const days = [];
+
         const calendarHeader = (
-            <div className="section-header">
+            <div id="calendar-header" className="section-header">
+                {/*todo - replace with icon*/}
+                <button onClick={this.decrementMonth}>Prev</button>
                 <h2>{months[this.state.currentMonth].name}</h2>
+                {/*todo - replace with icon*/}
+                <button onClick={this.incrementMonth}>Next</button>
             </div>
         );
 
         const day = (date) => (
             <div key={`day-${date}`} id={`day-${date}`} className="calendar-day">
-                <p style={gridPos(date / 7, date / 4)}>{date + 1}</p>
+                <p>{date + 1}</p>
             </div>
         );
 
-        const days = [];
         for (let idx = 0; idx < months[this.state.currentMonth].days; idx++) {
             days.push(day(idx))
         }
