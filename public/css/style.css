@@ -171,6 +171,26 @@ body {
   margin: 10px 15px;
 }
 
+#time-block-list {
+  margin: 10px 15px;
+  overflow-y: auto;
+}
+
+.time-block-group {
+  display: flex;
+  flex-flow: row nowrap;
+  margin: 30px 15px;
+}
+.time-block-group .time-block-time {
+  text-align: center;
+  min-width: 100px;
+}
+.time-block-group .time-block-display {
+  width: 100%;
+  border-top: 2px solid black;
+  border-bottom: 2px solid grey;
+}
+
 input {
   width: 50%;
   height: 25px;

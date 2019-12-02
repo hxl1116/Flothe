@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import Section from "./Section";
 import Sidebar from "./Sidebar";
+import Today from "./Today";
 
 const sections = {
     'To-Do': {id: 'todo', name: 'To-Do'},
@@ -33,9 +34,10 @@ class App extends Component {
                     <Section id ={'calender'} name ={"Calendar"} timed={true}
                              transferredTasks={this.state.transferredTasks}
                     />
-                    <Section id={'today'} name={'Today'} timed={true}
-                             transferredTasks={this.state.transferredTasks}
-                    />
+                    <Today id="today" name="Today"/>
+                    {/*<Section id={'today'} name={'Today'} timed={true}*/}
+                    {/*         transferredTasks={this.state.transferredTasks}*/}
+                    {/*/>*/}
                     <Section id={'todo'} name={'ToDo'}
                              transferTaskToEvent={(task) => this.transferTaskToEvent(task)}
                              transferredTasks={this.state.transferredTasks}
