@@ -20,6 +20,10 @@ body {
   display: flex !important;
   flex-flow: row nowrap;
   align-content: space-between;
+  place-self: center;
+}
+#calendar-header h2 {
+  min-width: 200px;
 }
 
 #days-group {

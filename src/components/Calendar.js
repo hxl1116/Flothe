@@ -78,10 +78,10 @@ class Calendar extends Component {
         const calendarHeader = (
             <div id="calendar-header" className="section-header">
                 {/*todo - replace with icon*/}
-                <button onClick={this.decrementMonth}>Prev</button>
+                <i className="material-icons" onClick={this.decrementMonth}>chevron_left</i>
                 <h2>{months[this.state.currentMonth].name}</h2>
                 {/*todo - replace with icon*/}
-                <button onClick={this.incrementMonth}>Next</button>
+                <i className="material-icons" onClick={this.incrementMonth}>chevron_right</i>
             </div>
         );
 
