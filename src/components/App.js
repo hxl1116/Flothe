@@ -13,15 +13,32 @@ class App extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            transferredTasks: []
+            calendarEvents: [],
+            todoTasks: [],
+            goalItems: [],
+            motivationItems: [],
+            happinessItems: []
         }
     }
 
+    // todo - Pass function to Section props
+    addItem = (id, data) => {
+
+    };
+
+    // todo - Pass function to Section props
+    updateItem = (id, item) => {
+
+    };
+
+    // todo - Pass function to Section props
+    deleteItem = (id, idx) => {
+
+    };
+
     transferTaskToEvent = (task) => {
         this.setState({
-            transferredTasks: this.state.transferredTasks.concat(task)
-        }, () => {
-            console.log(task)
+            calendarEvents: this.state.calendarEvents.concat(task)
         })
     };
 
@@ -30,25 +47,12 @@ class App extends Component {
             <>
                 <Sidebar/>
                 <div id="sections-wrapper" className="day-layout">
-                    <Section id ={'calender'} name ={"Calendar"} timed={true}
-                             transferredTasks={this.state.transferredTasks}
-                    />
-                    <Section id={'today'} name={'Today'} timed={true}
-                             transferredTasks={this.state.transferredTasks}
-                    />
-                    <Section id={'todo'} name={'ToDo'}
-                             transferTaskToEvent={(task) => this.transferTaskToEvent(task)}
-                             transferredTasks={this.state.transferredTasks}
-                    />
-                    <Section id={'goal'} name={'Goal' }
-                             transferredTasks={this.state.transferredTasks}
-                    />
-                    <Section id={'motivation'} name={'Motivation'}
-                             transferredTasks={this.state.transferredTasks}
-                    />
-                    <Section id={'happiness'} name={'Happiness'}
-                             transferredTasks={this.state.transferredTasks}
-                    />
+                    <Section id={'calender'} name={"Calendar"} timed={true}/>
+                    <Section id={'today'} name={'Today'} timed={true}/>
+                    <Section id={'todo'} name={'ToDo'} transferTaskToEvent={(task) => this.transferTaskToEvent(task)}/>
+                    <Section id={'goal'} name={'Goal'}/>
+                    <Section id={'motivation'} name={'Motivation'}/>
+                    <Section id={'happiness'} name={'Happiness'}/>
                 </div>
             </>
         )

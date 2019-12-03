@@ -12,9 +12,6 @@ class Section extends Component {
         super(props);
         this.state = {
             showInputGroup: false,
-            items: [
-                // testItem
-            ]
         }
     }
 
@@ -24,6 +21,7 @@ class Section extends Component {
         })
     };
 
+    // todo - Pass data to root component (App)
     addItem = () => {
         let name = document.querySelector(`#${this.props.name}-name-input`);
         let desc = document.querySelector(`#${this.props.name}-desc-input`);
@@ -36,14 +34,14 @@ class Section extends Component {
         }
     };
 
-    // todo - modify to account for transferred tasks
+    // todo - Pass data to root component (App)
     updateItem = (idx, update) => {
         this.setState({
             items: this.state.items.map((item, jdx) => idx === jdx ? update : item)
         })
     };
 
-    // todo - modify to account for transferred tasks
+    // todo - Pass data to root component (App)
     deleteItem = (idx) => {
         this.setState({
             items: this.state.items.filter((item, jdx) => {
@@ -55,6 +53,7 @@ class Section extends Component {
         })
     };
 
+    // todo - Verify data transfer to root component (App)
     scheduleItem = (idx, update) => {
         let task = this.state.items.filter((item, jdx) => {
             return idx === jdx
@@ -78,6 +77,7 @@ class Section extends Component {
 
         const sectionList = (
             <ol id={`${this.props.id}-section-list`} className="section-list">
+                {/*todo - Refactor data source*/}
                 {Object.values(this.state.items).map((val, idx) => (
                     <Item key={`${this.props.name}-task-${idx}`}
                           section={this.props.id}
@@ -89,6 +89,7 @@ class Section extends Component {
                           scheduleItem={(idx, update) => this.scheduleItem(idx, update)}
                     />
                 ))}
+                {/*todo - Refactor data source*/}
                 {this.props.timed ? <>
                     {Object.values(this.props.transferredTasks).map((val, idx) => (
                         <Item key={`${this.props.name}-transferred-task-${idx}`}
@@ -144,7 +145,7 @@ Section.propTypes = {
     id: PropTypes.string,
     name: PropTypes.string,
     timed: PropTypes.bool,
-    transferredTasks: PropTypes.array,
+    items: PropTypes.array,
     transferTaskToEvent: PropTypes.func
 };
 
