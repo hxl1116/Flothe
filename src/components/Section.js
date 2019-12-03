@@ -70,7 +70,7 @@ class Section extends Component {
         const sectionHeader = (
             <div className="section-header">
                 <h2>{this.props.name}</h2>
-                <i className="material-icons" onClick={this.toggleAddInput}>
+                <i className="material-icons" style={{fontSize: 40}} onClick={this.toggleAddInput}>
                     {this.state.showInputGroup ? 'remove' : 'add'}
                 </i>
             </div>
