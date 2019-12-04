@@ -69,7 +69,6 @@ class Item extends Component {
                             this.toggleEditGroup();
                             this.toggleOptionsGroup();
                         }}>create</i>
-                        {/* todo: add onClick functionality */}
                         {this.props.section === 'todo' ?
                             <i className="material-icons" onClick={() => {
                                 if (this.state.showEditGroup) this.toggleEditGroup();
@@ -84,7 +83,6 @@ class Item extends Component {
                     </>
                 ) : (
                     <>
-                        {/* todo: add onClick functionality */}
                         <i className="material-icons" onClick={this.toggleOptionsGroup}>more_vert</i>
                     </>
                 )}
