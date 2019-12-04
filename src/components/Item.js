@@ -148,6 +148,7 @@ Item.propTypes = {
     idx: PropTypes.number,
     name: PropTypes.string,
     desc: PropTypes.string,
+    date: PropTypes.string,
     start: PropTypes.string,
     end: PropTypes.string,
     updateItem: PropTypes.func,

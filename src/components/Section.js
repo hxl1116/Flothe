@@ -19,7 +19,12 @@ class Section extends Component {
     addItem = () => {
         let name = document.querySelector(`#${this.props.name}-name-input`);
         let desc = document.querySelector(`#${this.props.name}-desc-input`);
-        if (name.value !== '') this.props.addItem({name: name.value, desc: desc.value})
+        if (name.value !== '') this.props.addItem({
+            name: name.value,
+            desc: desc.value,
+            day: new Date().getDay(),
+            month: new Date().getMonth()
+        })
     };
 
     updateItem = (idx, update) => {
