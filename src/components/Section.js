@@ -2,19 +2,11 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import Item from "./Item";
 
-const testItem = {
-    name: 'Test Item',
-    desc: 'This is a test To-Do Item'
-};
-
 class Section extends Component {
     constructor(props) {
         super(props);
         this.state = {
             showInputGroup: false,
-            items: [
-                // testItem
-            ]
         }
     }
 
@@ -27,43 +19,20 @@ class Section extends Component {
     addItem = () => {
         let name = document.querySelector(`#${this.props.name}-name-input`);
         let desc = document.querySelector(`#${this.props.name}-desc-input`);
-        if (name.value !== '') {
-            this.setState({
-                items: this.state.items.concat({name: name.value, desc: desc.value})
-            }, () => {
-                console.log(this.state.items)
-            })
-        }
+        if (name.value !== '') this.props.addItem({name: name.value, desc: desc.value})
     };
 
-    // todo - modify to account for transferred tasks
     updateItem = (idx, update) => {
-        this.setState({
-            items: this.state.items.map((item, jdx) => idx === jdx ? update : item)
-        })
+        this.props.updateItem(idx, update)
     };
 
-    // todo - modify to account for transferred tasks
     deleteItem = (idx) => {
-        this.setState({
-            items: this.state.items.filter((item, jdx) => {
-                console.log(item, idx, jdx);
-                return idx !== jdx
-            })
-        }, () => {
-            console.log(this.state.items)
-        })
+        this.props.deleteItem(idx)
     };
 
+    // todo - Verify data transfer to root component (App)
     scheduleItem = (idx, update) => {
-        let task = this.state.items.filter((item, jdx) => {
-            return idx === jdx
-        });
-
-        task[0].start = update.start;
-        task[0].end = update.end;
-
-        this.props.transferTaskToEvent(task)
+        this.props.transferTaskToEvent(idx, update)
     };
 
     render() {
@@ -78,32 +47,19 @@ class Section extends Component {
 
         const sectionList = (
             <ol id={`${this.props.id}-section-list`} className="section-list">
-                {Object.values(this.state.items).map((val, idx) => (
+                {Object.values(this.props.items).map((val, idx) => (
                     <Item key={`${this.props.name}-task-${idx}`}
                           section={this.props.id}
                           idx={idx}
                           name={val.name}
                           desc={val.desc}
+                          start={val.start}
+                          end={val.end}
                           updateItem={(idx, update) => this.updateItem(idx, update)}
                           deleteItem={(idx) => this.deleteItem(idx)}
                           scheduleItem={(idx, update) => this.scheduleItem(idx, update)}
                     />
                 ))}
-                {this.props.timed ? <>
-                    {Object.values(this.props.transferredTasks).map((val, idx) => (
-                        <Item key={`${this.props.name}-transferred-task-${idx}`}
-                              section={this.props.id}
-                              idx={idx}
-                              name={val.name}
-                              desc={val.desc}
-                              start={val.start}
-                              end={val.end}
-                              updateItem={(idx, update) => this.updateItem(idx, update)}
-                              deleteItem={(idx) => this.deleteItem(idx)}
-                              scheduleItem={(idx, update) => this.scheduleItem(idx, update)}
-                        />
-                    ))}
-                </> : <></>}
             </ol>
         );
 
@@ -111,16 +67,6 @@ class Section extends Component {
             <div className={`section-input-group ${this.state.showInputGroup ? 'show' : 'hide'}`}>
                 <input type="text" id={`${this.props.name}-name-input`} placeholder="Name"/>
                 <input type="text" id={`${this.props.name}-desc-input`} placeholder="Description"/>
-                {this.props.timed ? (
-                    <>
-                        <input type="text"
-                               id={`${this.props.name}-start-input`}
-                               defaultValue={'Current time'}
-                               placeholder={'Start time'}
-                        />
-                        <input type="text" id={`${this.props}-end-input`} placeholder={'End time'}/>
-                    </>
-                ) : (<></>)}
                 <button onClick={() => {
                     this.addItem();
                     this.toggleAddInput()
@@ -144,7 +90,10 @@ Section.propTypes = {
     id: PropTypes.string,
     name: PropTypes.string,
     timed: PropTypes.bool,
-    transferredTasks: PropTypes.array,
+    items: PropTypes.array,
+    addItem: PropTypes.func,
+    updateItem: PropTypes.func,
+    deleteItem: PropTypes.func,
     transferTaskToEvent: PropTypes.func
 };
 
