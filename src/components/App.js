@@ -14,7 +14,7 @@ class App extends Component {
         this.state = {
             calendarEvents: [],
             todoTasks: [
-                testItem
+                // testItem
             ],
             goalItems: [],
             motivationItems: [],
