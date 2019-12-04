@@ -111,7 +111,8 @@ class Calendar extends Component {
 }
 
 Calendar.propTypes = {
-    id: PropTypes.string
+    id: PropTypes.string,
+    items: PropTypes.array
 };
 
 export default Calendar

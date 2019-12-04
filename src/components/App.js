@@ -135,10 +135,7 @@ class App extends Component {
             <>
                 <Sidebar/>
                 <div id="sections-wrapper" className="day-layout">
-                    <Calendar id="calendar"/>
-                    {/*<Section id ={'calender'} name ={"Calendar"} timed={true}*/}
-                    {/*         transferredTasks={this.state.transferredTasks}*/}
-                    {/*/>*/}
+                    <Calendar id="calendar" items={this.state.calendarEvents}/>
                     <Section id="today"
                              name="Today"
                              items={this.state.calendarEvents}
