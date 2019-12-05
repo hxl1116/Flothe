@@ -63,6 +63,22 @@ body {
   width: 100%;
 }
 
+.today-item-group {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: flex-start;
+  background-color: #53b582;
+  border-radius: 20px;
+}
+.today-item-group h3 {
+  background-color: #60CF95;
+  padding: 10px 15px;
+  border-radius: 20px;
+}
+.today-item-group p {
+  padding: 10px 15px;
+}
+
 .section-container {
   display: flex;
   flex-flow: column nowrap;
@@ -187,6 +203,8 @@ body {
   min-width: 100px;
 }
 .time-block-group .time-block-display {
+  display: flex;
+  flex-flow: row nowrap;
   width: 100%;
   border-top: 2px solid black;
   border-bottom: 2px solid grey;

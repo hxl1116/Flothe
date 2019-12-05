@@ -3,22 +3,35 @@ import Section from "./Section";
 import Sidebar from "./Sidebar";
 import Today from "./Today";
 
-const testItem = {
+const testTodoTask = {
     name: 'Test Item',
     desc: 'This is a test To-Do Item'
+};
+
+const testCalendarEvent = {
+    name: 'Test Item',
+    desc: 'This is a test To-Do Item',
+    location: '',
+    month: '11',
+    day: '0',
+    start: '1:00',
+    end: '2:00'
 };
 
 class App extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            calendarEvents: [],
+            calendarEvents: [
+                testCalendarEvent
+            ],
             todoTasks: [
-                // testItem
+                testTodoTask
             ],
             goalItems: [],
             motivationItems: [],
-            happinessItems: []
+            happinessItems: [],
+            currentDay: new Date().getDay()
         }
     }
 
@@ -142,7 +155,11 @@ class App extends Component {
                              updateItem={(idx, data) => this.updateItem('calendar', idx, data)}
                              deleteItem={(idx) => this.deleteItem('calendar', idx)}
                     />
-                    <Today id="today" name="Today"/>
+                    <Today id="today"
+                           name="Today"
+                           items={this.state.calendarEvents}
+                           currentDay={this.state.currentDay}
+                    />
                     <Section id="todo"
                              name="ToDo"
                              items={this.state.todoTasks}
