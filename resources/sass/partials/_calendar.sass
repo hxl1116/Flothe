@@ -1,0 +1,32 @@
+#calendar-header
+  display: flex !important
+  flex-flow: row nowrap
+  align-content: space-between
+  place-self: center
+
+  h2
+    min-width: 200px
+
+#days-group
+  display: grid
+  grid-template-columns: 7fr 7fr 7fr 7fr 7fr 7fr 7fr
+  grid-template-rows: 4fr 4fr 4fr 4fr
+  grid-auto-flow: row
+  place-self: center
+  margin: 10px 15px
+
+.calendar-day
+  display: flex
+  justify-content: center
+  align-items: center
+  width: 60px
+  height: 60px
+
+  p
+    text-align: center
+    margin: 0
+    padding: 0
+
+  &.selected
+    background-color: orange
+    border-radius: 50%

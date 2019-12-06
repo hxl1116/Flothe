@@ -1,23 +1,37 @@
 import React, {Component} from 'react';
 import Section from "./Section";
 import Sidebar from "./Sidebar";
+import Calendar from "./Calendar";
 
-const testItem = {
+const testTodoTask = {
     name: 'Test Item',
     desc: 'This is a test To-Do Item'
+};
+
+const testCalendarEvent = {
+    name: 'Test Item',
+    desc: 'This is a test Calendar Event',
+    location: 'Victor, NY',
+    month: '11',
+    day: '0',
+    start: '10:00',
+    end: '11:00'
 };
 
 class App extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            calendarEvents: [],
+            calendarEvents: [
+                testCalendarEvent
+            ],
             todoTasks: [
-                // testItem
+                testTodoTask
             ],
             goalItems: [],
             motivationItems: [],
-            happinessItems: []
+            happinessItems: [],
+            currentDay: new Date().getDay()
         }
     }
 
@@ -129,18 +143,19 @@ class App extends Component {
         })
     };
 
+    selectDay = (date) => {
+        this.setState({
+            currentDay: date
+        })
+    };
+
     render() {
         return (
             <>
                 <Sidebar/>
                 <div id="sections-wrapper" className="day-layout">
-                    <Section id="calender"
-                             name="Calendar"
-                             items={this.state.calendarEvents}
-                             addItem={(data) => this.addItem('calendar', data)}
-                             updateItem={(idx, data) => this.updateItem('calendar', idx, data)}
-                             deleteItem={(idx) => this.deleteItem('calendar', idx)}
-                    />
+                    <Calendar id="calendar" items={this.state.calendarEvents} currentDay={this.state.currentDay}
+                              selectDay={(date) => this.selectDay(date)}/>
                     <Section id="today"
                              name="Today"
                              items={this.state.calendarEvents}
