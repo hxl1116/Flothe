@@ -47,7 +47,7 @@ class Today extends Component {
                 <p className="time-block-time">{time}</p>
                 <div className="time-block-display">
                     {this.props.items.map(value => {
-                        console.log(value.start, time);
+                        console.log(value);
                         if (value.start === time)
                             return <TodayItem idx={idx}
                                               name={value.name}

@@ -10,12 +10,12 @@ const testTodoTask = {
 
 const testCalendarEvent = {
     name: 'Test Item',
-    desc: 'This is a test To-Do Item',
-    location: '',
+    desc: 'This is a test Calendar Event',
+    location: 'Victor, NY',
     month: '11',
     day: '0',
-    start: '1:00',
-    end: '2:00'
+    start: '10:00',
+    end: '11:00'
 };
 
 class App extends Component {

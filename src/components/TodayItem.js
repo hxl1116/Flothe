@@ -10,11 +10,17 @@ class TodayItem extends Component {
         }
     }
 
+    toggleDesc = () => {
+        this.setState({
+            showDesc: !this.state.showDesc
+        })
+    };
+
     render() {
         return (
             <li className="today-item-group">
                 <h3>{this.props.name}</h3>
-                <p>{this.state.showDesc ? this.props.desc : this.props.location}</p>
+                <p onClick={this.toggleDesc}>{this.state.showDesc ? this.props.desc : this.props.location}</p>
             </li>
         )
     }

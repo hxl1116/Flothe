@@ -68,15 +68,16 @@ body {
   flex-flow: column nowrap;
   justify-content: flex-start;
   background-color: #53b582;
-  border-radius: 20px;
+  min-height: 50px;
+  border-radius: 15px;
 }
 .today-item-group h3 {
   background-color: #60CF95;
-  padding: 10px 15px;
-  border-radius: 20px;
+  padding: 5px 7px;
+  border-radius: 15px;
 }
 .today-item-group p {
-  padding: 10px 15px;
+  padding: 5px 7px;
 }
 
 .section-container {
@@ -196,16 +197,21 @@ body {
 .time-block-group {
   display: flex;
   flex-flow: row nowrap;
-  margin: 30px 15px;
+  margin: 15px;
 }
 .time-block-group .time-block-time {
   text-align: center;
-  min-width: 100px;
+  align-self: center;
+  padding-right: 5px;
+  min-width: 60px;
 }
 .time-block-group .time-block-display {
   display: flex;
   flex-flow: row nowrap;
+  align-items: center;
+  justify-content: center;
   width: 100%;
+  min-height: 50px;
   border-top: 2px solid black;
   border-bottom: 2px solid grey;
 }
