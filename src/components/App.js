@@ -13,7 +13,7 @@ const testCalendarEvent = {
     desc: 'This is a test Calendar Event',
     location: 'Victor, NY',
     month: '11',
-    day: '0',
+    day: '5',
     start: '10:00',
     end: '11:00'
 };
@@ -31,7 +31,7 @@ class App extends Component {
             goalItems: [],
             motivationItems: [],
             happinessItems: [],
-            currentDay: new Date().getDay()
+            currentDay: new Date().getDay().toString()
         }
     }
 

@@ -1,4 +1,4 @@
-import React, {Component, Fragment} from 'react'
+import React, {Component} from 'react'
 import PropTypes from 'prop-types'
 import TodayItem from "./TodayItem";
 
@@ -46,19 +46,18 @@ class Today extends Component {
             <div key={`time-block-${idx}`} className="time-block-group">
                 <p className="time-block-time">{time}</p>
                 <div className="time-block-display">
-                    {this.props.items.map(value => {
-                        console.log(value);
-                        if (value.start === time)
-                            return <TodayItem idx={idx}
-                                              name={value.name}
-                                              desc={value.desc}
-                                              location={value.location}
-                                              month={value.month}
-                                              day={value.day}
-                                              start={value.start}
-                                              end={value.end}
-                            />
-                    })}
+                    {this.props.items.map(value => (value.day === this.props.currentDay && value.start === time) ? (
+                        <TodayItem key={`today-item-${idx}`}
+                                   idx={idx}
+                                   name={value.name}
+                                   desc={value.desc}
+                                   location={value.location}
+                                   month={value.month}
+                                   day={value.day}
+                                   start={value.start}
+                                   end={value.end}
+                        />
+                    ) : (<></>))}
                 </div>
             </div>
         );
