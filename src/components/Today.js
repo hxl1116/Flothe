@@ -46,18 +46,20 @@ class Today extends Component {
             <div key={`time-block-${idx}`} className="time-block-group">
                 <p className="time-block-time">{time}</p>
                 <div className="time-block-display">
-                    {this.props.items.map(value => (value.day === this.props.currentDay && value.start === time) ? (
-                        <TodayItem key={`today-item-${idx}`}
-                                   idx={idx}
-                                   name={value.name}
-                                   desc={value.desc}
-                                   location={value.location}
-                                   month={value.month}
-                                   day={value.day}
-                                   start={value.start}
-                                   end={value.end}
-                        />
-                    ) : (<></>))}
+                    {this.props.items.map(
+                        value => (value.day === this.props.currentDay.toString() && value.start === time) ? (
+                            <TodayItem key={`today-item-${idx}`}
+                                       idx={idx}
+                                       name={value.name}
+                                       desc={value.desc}
+                                       location={value.location}
+                                       month={value.month}
+                                       day={value.day}
+                                       start={value.start}
+                                       end={value.end}
+                            />
+                        ) : (<></>)
+                    )}
                 </div>
             </div>
         );

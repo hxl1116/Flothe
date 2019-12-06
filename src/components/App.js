@@ -32,7 +32,7 @@ class App extends Component {
             goalItems: [],
             motivationItems: [],
             happinessItems: [],
-            currentDay: new Date().getDay().toString()
+            currentDay: new Date().getDay()
         }
     }
 
@@ -145,6 +145,7 @@ class App extends Component {
     };
 
     selectDay = (date) => {
+        // console.log(date, date.toString());
         this.setState({
             currentDay: date
         })
@@ -157,7 +158,6 @@ class App extends Component {
                 <div id="sections-wrapper" className="day-layout">
                     <Calendar id="calendar" items={this.state.calendarEvents} currentDay={this.state.currentDay}
                               selectDay={(date) => this.selectDay(date)}/>
-
                     <Today id="today"
                            name="Today"
                            items={this.state.calendarEvents}
