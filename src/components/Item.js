@@ -122,12 +122,6 @@ class Item extends Component {
                     <h3>{this.props.name}</h3>
                     <div className="item-content">
                         <p>{this.props.desc}</p>
-                        {this.props.start ? (
-                            <p>{this.props.start}</p>
-                        ) : <></>}
-                        {this.props.end ? (
-                            <p>{this.props.end}</p>
-                        ) : <></>}
                     </div>
                     {optionsGroup}
                 </li>
@@ -150,8 +144,6 @@ Item.propTypes = {
     desc: PropTypes.string,
     month: PropTypes.string,
     day: PropTypes.string,
-    start: PropTypes.string,
-    end: PropTypes.string,
     updateItem: PropTypes.func,
     deleteItem: PropTypes.func,
     scheduleItem: PropTypes.func

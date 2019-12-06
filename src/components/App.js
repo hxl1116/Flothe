@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import Section from "./Section";
 import Sidebar from "./Sidebar";
 import Calendar from "./Calendar";
+import Today from "./Today";
 
 const testTodoTask = {
     name: 'Test Item',
@@ -13,7 +14,7 @@ const testCalendarEvent = {
     desc: 'This is a test Calendar Event',
     location: 'Victor, NY',
     month: '11',
-    day: '0',
+    day: '5',
     start: '10:00',
     end: '11:00'
 };
@@ -31,7 +32,7 @@ class App extends Component {
             goalItems: [],
             motivationItems: [],
             happinessItems: [],
-            currentDay: new Date().getDay()
+            currentDay: new Date().getDay().toString()
         }
     }
 
@@ -156,12 +157,11 @@ class App extends Component {
                 <div id="sections-wrapper" className="day-layout">
                     <Calendar id="calendar" items={this.state.calendarEvents} currentDay={this.state.currentDay}
                               selectDay={(date) => this.selectDay(date)}/>
-                    <Section id="today"
-                             name="Today"
-                             items={this.state.calendarEvents}
-                             addItem={(data) => this.addItem('calendar', data)}
-                             updateItem={(idx, data) => this.updateItem('calendar', idx, data)}
-                             deleteItem={(idx) => this.deleteItem('calendar', idx)}
+
+                    <Today id="today"
+                           name="Today"
+                           items={this.state.calendarEvents}
+                           currentDay={this.state.currentDay}
                     />
                     <Section id="todo"
                              name="ToDo"
