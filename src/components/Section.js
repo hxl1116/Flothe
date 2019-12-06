@@ -35,7 +35,6 @@ class Section extends Component {
         this.props.deleteItem(idx)
     };
 
-    // todo - Verify data transfer to root component (App)
     scheduleItem = (idx, update) => {
         this.props.transferTaskToEvent(idx, update)
     };

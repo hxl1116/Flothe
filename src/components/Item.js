@@ -1,21 +1,28 @@
-import React, {Component} from 'react'
+import React, {Component, Fragment} from 'react'
 import PropTypes from 'prop-types'
 
 class Item extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            showEditGroup: false,
+            editMode: false,
+            // showEditGroup: false,
             showOptions: false,
             showTimeGroup: false
         }
     }
 
-    toggleEditGroup = () => {
+    toggleEditMode = () => {
         this.setState({
-            showEditGroup: !this.state.showEditGroup
+            editMode: !this.state.editMode
         })
     };
+
+    // toggleEditGroup = () => {
+    //     this.setState({
+    //         showEditGroup: !this.state.showEditGroup
+    //     })
+    // };
 
     toggleOptionsGroup = () => {
         this.setState({
@@ -66,12 +73,12 @@ class Item extends Component {
                     <>
                         <i className="material-icons" onClick={() => {
                             if (this.state.showTimeGroup) this.toggleTimeGroup();
-                            this.toggleEditGroup();
+                            this.toggleEditMode();
                             this.toggleOptionsGroup();
                         }}>create</i>
                         {this.props.section === 'todo' ?
                             <i className="material-icons" onClick={() => {
-                                if (this.state.showEditGroup) this.toggleEditGroup();
+                                if (this.state.editMode) this.toggleEditMode();
                                 this.toggleTimeGroup();
                                 this.toggleOptionsGroup();
                             }}>calendar_today</i> : <></>
@@ -91,7 +98,7 @@ class Item extends Component {
 
         const editGroup = (
             <div id={`${this.props.section}-edit-group`}
-                 className={`input-group ${this.state.showEditGroup ? 'show' : 'hide'}`}>
+                 className={`input-group ${this.state.editMode ? 'show' : 'hide'}`}>
                 <input type="text" id={`${this.props.section}-name-edit`} placeholder="Name"/>
                 <input type="text" id={`${this.props.section}-desc-edit`} placeholder="Description"/>
                 <button onClick={() => {
@@ -119,17 +126,33 @@ class Item extends Component {
         return (
             <>
                 <li className="item-group">
-                    <h3>{this.props.name}</h3>
+                    {this.state.editMode ? (
+                        <input type="text" id={`${this.props.section}-name-edit`} className="title-edit"
+                               placeholder="Click to edit title"/>
+                    ) : (
+                        <h3>{this.props.name}</h3>
+                    )}
                     <div className="item-content">
-                        <p>{this.props.desc}</p>
+                        {this.state.editMode ? (
+                            <input type="text" id={`${this.props.section}-desc-edit`} className="desc-edit"
+                                   placeholder="Click to edit description"/>
+                        ) : (
+                            <p>{this.props.desc}</p>
+                        )}
                     </div>
+                    {this.state.editMode ? (
+                        <button onClick={() => {
+                            this.updateSelf();
+                            this.toggleEditMode();
+                        }}>Done</button>
+                    ) : (<></>)}
                     {optionsGroup}
                 </li>
                 {/* Migrate to Section */}
                 <div className={
                     `input-group ${this.state.showEditGroup || this.state.showTimeGroup ? 'show' : 'hide'}`
                 }>
-                    {editGroup}
+                    {/*{editGroup}*/}
                     {timeGroup}
                 </div>
             </>

@@ -71,6 +71,27 @@ body {
 .item-group p {
   padding: 10px 15px;
 }
+.item-group input {
+  font-size: 20px !important;
+  width: auto !important;
+  height: auto !important;
+  border: none !important;
+}
+.item-group input.title-edit {
+  background-color: #60CF95;
+  padding: 10px 15px;
+  border-radius: 20px;
+  outline: none;
+}
+.item-group input.desc-edit {
+  padding: 10px 15px;
+  background: none !important;
+  outline: none;
+}
+.item-group button {
+  font-size: 20px !important;
+  align-self: center;
+}
 
 .options-group {
   display: flex;

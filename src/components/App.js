@@ -27,7 +27,7 @@ class App extends Component {
                 // testCalendarEvent
             ],
             todoTasks: [
-                // testTodoTask
+                testTodoTask
             ],
             goalItems: [],
             motivationItems: [],
