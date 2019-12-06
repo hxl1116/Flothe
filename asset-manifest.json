@@ -1,18 +1,18 @@
 {
   "files": {
-    "main.js": "/Flothe/static/js/main.8dc71641.chunk.js",
-    "main.js.map": "/Flothe/static/js/main.8dc71641.chunk.js.map",
+    "main.js": "/Flothe/static/js/main.49b33234.chunk.js",
+    "main.js.map": "/Flothe/static/js/main.49b33234.chunk.js.map",
     "runtime-main.js": "/Flothe/static/js/runtime-main.03a6b4fb.js",
     "runtime-main.js.map": "/Flothe/static/js/runtime-main.03a6b4fb.js.map",
     "static/js/2.a0adb57f.chunk.js": "/Flothe/static/js/2.a0adb57f.chunk.js",
     "static/js/2.a0adb57f.chunk.js.map": "/Flothe/static/js/2.a0adb57f.chunk.js.map",
     "index.html": "/Flothe/index.html",
-    "precache-manifest.324aae8f1c1cceae9b3b946a792e855f.js": "/Flothe/precache-manifest.324aae8f1c1cceae9b3b946a792e855f.js",
+    "precache-manifest.f28500b6bc35cf6895e7eadc51c98c7b.js": "/Flothe/precache-manifest.f28500b6bc35cf6895e7eadc51c98c7b.js",
     "service-worker.js": "/Flothe/service-worker.js"
   },
   "entrypoints": [
     "static/js/runtime-main.03a6b4fb.js",
     "static/js/2.a0adb57f.chunk.js",
-    "static/js/main.8dc71641.chunk.js"
+    "static/js/main.49b33234.chunk.js"
   ]
 }
