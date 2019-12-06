@@ -88,6 +88,17 @@ body {
   background: none !important;
   outline: none;
 }
+.item-group input.start-edit {
+  background-color: #60CF95;
+  padding: 10px 15px;
+  border-radius: 20px;
+  outline: none;
+}
+.item-group input.end-edit {
+  padding: 10px 15px;
+  background: none !important;
+  outline: none;
+}
 .item-group button {
   font-size: 20px !important;
   align-self: center;

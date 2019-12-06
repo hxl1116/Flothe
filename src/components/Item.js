@@ -6,15 +6,22 @@ class Item extends Component {
         super(props);
         this.state = {
             editMode: false,
+            scheduleMode: false,
             // showEditGroup: false,
             showOptions: false,
-            showTimeGroup: false
+            // showTimeGroup: false
         }
     }
 
     toggleEditMode = () => {
         this.setState({
             editMode: !this.state.editMode
+        })
+    };
+
+    toggleScheduleMode = () => {
+        this.setState({
+            scheduleMode: !this.state.scheduleMode
         })
     };
 
@@ -36,11 +43,11 @@ class Item extends Component {
         }, 5000)
     };
 
-    toggleTimeGroup = () => {
-        this.setState({
-            showTimeGroup: !this.state.showTimeGroup
-        })
-    };
+    // toggleTimeGroup = () => {
+    //     this.setState({
+    //         showTimeGroup: !this.state.showTimeGroup
+    //     })
+    // };
 
     updateSelf = () => {
         let name = document.querySelector(`#${this.props.section}-name-edit`);
@@ -60,10 +67,16 @@ class Item extends Component {
         let startTime = document.querySelector(`#${this.props.section}-start-time-edit`);
         let endTime = document.querySelector(`#${this.props.section}-end-time-edit`);
 
-        this.props.scheduleItem(this.props.idx, {
-            start: startTime.value,
-            end: endTime.value
-        })
+        if (startTime.value !== '' && endTime.value !== '') {
+            this.props.scheduleItem(this.props.idx, {
+                month: new Date().getMonth(),
+                day: new Date().getDay(),
+                start: startTime.value,
+                end: endTime.value
+            });
+
+            this.deleteSelf();
+        }
     };
 
     render() {
@@ -72,14 +85,14 @@ class Item extends Component {
                 {this.state.showOptions ? (
                     <>
                         <i className="material-icons" onClick={() => {
-                            if (this.state.showTimeGroup) this.toggleTimeGroup();
+                            if (this.state.scheduleMode) this.toggleScheduleMode();
                             this.toggleEditMode();
                             this.toggleOptionsGroup();
                         }}>create</i>
                         {this.props.section === 'todo' ?
                             <i className="material-icons" onClick={() => {
                                 if (this.state.editMode) this.toggleEditMode();
-                                this.toggleTimeGroup();
+                                this.toggleScheduleMode();
                                 this.toggleOptionsGroup();
                             }}>calendar_today</i> : <></>
                         }
@@ -117,7 +130,7 @@ class Item extends Component {
                 <button onClick={() => {
                     this.scheduleSelf();
                     this.deleteSelf();
-                    this.toggleTimeGroup()
+                    this.toggleScheduleMode()
                 }}>Schedule
                 </button>
             </div>
@@ -126,18 +139,40 @@ class Item extends Component {
         return (
             <>
                 <li className="item-group">
+                    {!this.state.editMode && !this.state.scheduleMode ? (
+                        <h3>{this.props.name}</h3>
+                    ) : (
+                        <></>
+                    )}
                     {this.state.editMode ? (
                         <input type="text" id={`${this.props.section}-name-edit`} className="title-edit"
                                placeholder="Click to edit title"/>
                     ) : (
-                        <h3>{this.props.name}</h3>
+                        <></>
+                    )}
+                    {this.state.scheduleMode ? (
+                        <input type="text" id={`${this.props.section}-start-time-edit`} className="start-edit"
+                               placeholder="Click to enter start time"/>
+                    ) : (
+                        <></>
                     )}
                     <div className="item-content">
+                        {!this.state.editMode && !this.state.scheduleMode ? (
+                            <p>{this.props.desc}</p>
+                        ) : (
+                            <></>
+                        )}
                         {this.state.editMode ? (
                             <input type="text" id={`${this.props.section}-desc-edit`} className="desc-edit"
                                    placeholder="Click to edit description"/>
                         ) : (
-                            <p>{this.props.desc}</p>
+                            <></>
+                        )}
+                        {this.state.scheduleMode ? (
+                            <input type="text" id={`${this.props.section}-end-time-edit`} className="end-edit"
+                                   placeholder="Click to enter end time"/>
+                        ) : (
+                            <></>
                         )}
                     </div>
                     {this.state.editMode ? (
@@ -146,14 +181,20 @@ class Item extends Component {
                             this.toggleEditMode();
                         }}>Done</button>
                     ) : (<></>)}
+                    {this.state.scheduleMode ? (
+                        <button onClick={() => {
+                            this.scheduleSelf();
+                            this.toggleScheduleMode()
+                        }}>Schedule</button>
+                    ) : (<></>)}
                     {optionsGroup}
                 </li>
                 {/* Migrate to Section */}
                 <div className={
-                    `input-group ${this.state.showEditGroup || this.state.showTimeGroup ? 'show' : 'hide'}`
+                    `input-group ${this.state.editMode || this.state.scheduleMode ? 'show' : 'hide'}`
                 }>
                     {/*{editGroup}*/}
-                    {timeGroup}
+                    {/*{timeGroup}*/}
                 </div>
             </>
         );

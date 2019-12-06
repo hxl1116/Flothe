@@ -24,7 +24,7 @@ class App extends Component {
         super(props);
         this.state = {
             calendarEvents: [
-                // testCalendarEvent
+                testCalendarEvent
             ],
             todoTasks: [
                 testTodoTask
@@ -135,6 +135,9 @@ class App extends Component {
     transferTaskToEvent = (idx, data) => {
         let task = this.state.todoTasks.filter((item, jdx) => idx === jdx);
 
+        task[0].idx = idx;
+        task[0].month = data.month;
+        task[0].day = data.day;
         task[0].start = data.start;
         task[0].end = data.end;
 

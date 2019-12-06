@@ -42,6 +42,7 @@ class Today extends Component {
             </div>
         );
 
+        // todo - Refresh data when ToDo Task is transferred
         const timeBlock = (time, idx) => (
             <div key={`time-block-${idx}`} className="time-block-group">
                 <p className="time-block-time">{time}</p>
