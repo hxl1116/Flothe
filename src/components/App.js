@@ -165,6 +165,7 @@ class App extends Component {
                            name="Today"
                            items={this.state.calendarEvents}
                            currentDay={this.state.currentDay}
+                           addItem={(data) => this.addItem('calendar', data)}
                     />
                     <Section id="todo"
                              name="ToDo"

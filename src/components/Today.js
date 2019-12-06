@@ -32,6 +32,24 @@ class Today extends Component {
         })
     };
 
+    addItem = () => {
+        let name = document.querySelector(`#${this.props.name}-name-input`);
+        let desc = document.querySelector(`#${this.props.name}-desc-input`);
+        let loc = document.querySelector(`#${this.props.name}-loc-input`);
+        let start = document.querySelector(`#${this.props.name}-start-input`);
+        let end = document.querySelector(`#${this.props.name}-end-input`);
+
+        // if (name.value !== '') this.props.addItem({
+        //     name: name.value,
+        //     desc: desc.value,
+        //     location: loc.value,
+        //     start: start.value,
+        //     end: end.value,
+        //     day: new Date().getDay(),
+        //     month: new Date().getMonth()
+        // })
+    };
+
     render() {
         const sectionHeader = (
             <div className="section-header">
@@ -67,18 +85,18 @@ class Today extends Component {
 
         const sectionForm = (
             <div className={`section-input-group ${this.state.showInputGroup ? 'show' : 'hide'}`}>
-                <input type="text" id={`${this.props.name}-name-input`} placeholder="Name"/>
-                <input type="text" id={`${this.props.name}-desc-input`} placeholder="Description"/>
-                {this.props.timed ? (
-                    <>
-                        <input type="text"
-                               id={`${this.props.name}-start-input`}
-                               defaultValue={'Current time'}
-                               placeholder={'Start time'}
-                        />
-                        <input type="text" id={`${this.props}-end-input`} placeholder={'End time'}/>
-                    </>
-                ) : (<></>)}
+                <input type="text" id={`${this.props.id}-name-input`} placeholder="Title"/>
+                <input type="text" id={`${this.props.id}-desc-input`} placeholder="Description"/>
+                <input type="text" id={`${this.props.id}-loc-input`} placeholder="Location"/>
+                <input type="text" id={`${this.props.id}-start-input`} placeholder="Start time"/>
+                <input type="text" id={`${this.props.id}-end-input`} placeholder="End time"/>
+                    {/*{this.props.timed ? (*/}
+                    {/*    <>*/}
+                    {/*        <input type="text" id={`${this.props.name}-start-input`} defaultValue={'Current time'} placeholder={'Start time'}*/}
+                    {/*        />*/}
+                    {/*        <input type="text" id={`${this.props}-end-input`} placeholder={'End time'}/>*/}
+                    {/*    </>*/}
+                    {/*) : (<></>)}*/}
                 <button onClick={() => {
                     this.addItem();
                     this.toggleAddInput()
@@ -91,10 +109,10 @@ class Today extends Component {
         return (
             <div id={`${this.props.id}-section`} className="section-container">
                 {sectionHeader}
+                {sectionForm}
                 <div id="time-block-list">
                     {times.map((value, idx) => timeBlock(value, idx))}
                 </div>
-                {sectionForm}
             </div>
         )
     }
@@ -103,7 +121,8 @@ class Today extends Component {
 Today.propTypes = {
     id: PropTypes.string,
     items: PropTypes.array,
-    currentDay: PropTypes.number
+    currentDay: PropTypes.number,
+    addItem: PropTypes.func
 };
 
 export default Today
