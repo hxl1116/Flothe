@@ -30,7 +30,8 @@ class App extends Component {
             ],
             goalItems: [],
             motivationItems: [],
-            happinessItems: []
+            happinessItems: [],
+            currentDay: new Date().getDay()
         }
     }
 
@@ -142,12 +143,19 @@ class App extends Component {
         })
     };
 
+    selectDay = (date) => {
+        this.setState({
+            currentDay: date
+        })
+    };
+
     render() {
         return (
             <>
                 <Sidebar/>
                 <div id="sections-wrapper" className="day-layout">
-                    <Calendar id="calendar" items={this.state.calendarEvents}/>
+                    <Calendar id="calendar" items={this.state.calendarEvents} currentDay={this.state.currentDay}
+                              selectDay={(date) => this.selectDay(date)}/>
                     <Section id="today"
                              name="Today"
                              items={this.state.calendarEvents}

@@ -72,6 +72,11 @@ class Calendar extends Component {
         })
     };
 
+    selectDay = (date) => {
+        console.log(date);
+        this.props.selectDay(date)
+    };
+
     render() {
         const days = [];
 
@@ -86,7 +91,9 @@ class Calendar extends Component {
         );
 
         const day = (date) => (
-            <div key={`day-${date}`} id={`day-${date}`} className="calendar-day">
+            <div key={`day-${date}`} id={`day-${date}`}
+                 className={`calendar-day ${this.props.currentDay === date ? 'selected' : ''}`}
+                 onClick={() => this.selectDay(date)}>
                 <p>{date + 1}</p>
             </div>
         );
@@ -112,7 +119,9 @@ class Calendar extends Component {
 
 Calendar.propTypes = {
     id: PropTypes.string,
-    items: PropTypes.array
+    items: PropTypes.array,
+    currentDay: PropTypes.number,
+    selectDay: PropTypes.func
 };
 
 export default Calendar

@@ -36,13 +36,20 @@ body {
 }
 
 .calendar-day {
-  width: 75px;
-  height: 75px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 60px;
+  height: 60px;
 }
 .calendar-day p {
   text-align: center;
   margin: 0;
   padding: 0;
+}
+.calendar-day.selected {
+  background-color: orange;
+  border-radius: 50%;
 }
 
 .item-group {
