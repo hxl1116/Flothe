@@ -1,0 +1,46 @@
+$item-primary: #60CF95
+$item-secondary: #53b582
+
+.item-group
+  display: flex
+  flex-flow: column nowrap
+  justify-content: flex-start
+  position: relative
+  background-color: $item-secondary
+  margin: 2px
+  min-height: 125px
+  border-radius: 20px
+  overflow: hidden
+
+  h3
+    background-color: $item-primary
+    padding: 10px 15px
+    border-radius: 20px
+
+  p
+    padding: 10px 15px
+
+.options-group
+  display: flex
+  flex-flow: column
+  position: absolute
+  place-self: center
+  justify-items: center
+  top: 5px
+  right: 10px
+
+  i
+    text-align: center
+    place-self: center
+    margin: 2px 2px
+    padding: 3px 3px
+
+.input-group
+  width: 100%
+
+  input
+    width: 100%
+    padding: 10px 15px
+
+  button
+    width: 100%

@@ -1,0 +1,61 @@
+$profile-img-dir: '../img/barack_obama.jpg'
+
+#side-menu-btn
+  margin: 10px 15px
+  position: fixed
+  z-index: 3
+
+#side-bar
+  display: flex
+  flex-flow: column nowrap
+  position: absolute
+  width: 15vw
+  height: 100vh
+  z-index: 2
+
+  button
+    place-self: center
+
+#side-menu
+  display: flex
+  flex-flow: column nowrap
+  align-self: center
+  align-items: center
+  background-color: lightgrey
+  height: 100%
+  width: 100%
+
+  li
+    text-align: center
+    padding: 10px 15px
+
+#team-section
+  display: flex
+  flex-flow: column nowrap
+  align-items: center
+
+  h3
+    text-align: center
+
+#team-input-group
+  display: flex
+  flex-flow: column nowrap
+  align-items: center
+
+  p
+    padding: 10px 15px
+
+  input
+    margin: 5px 0
+    padding: 10px 15px
+
+#profile-img
+  background-image: url($profile-img-dir)
+  top: 20px
+  left: 20px
+  border: 1px solid #ddd
+  width: 50px
+  height: 50px
+  border-radius: 50%
+  padding: 20px
+  margin: 10px 15px

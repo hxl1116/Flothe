@@ -1,0 +1,55 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap')
+@import "partials/base"
+@import "partials/item"
+@import "partials/section"
+@import "partials/sidebar"
+
+input
+  width: 50%
+  height: 25px
+  border: none
+  border-bottom: 2px solid grey
+  outline: none
+
+button
+  background: none
+  font-family: 'Montserrat', sans-serif
+  width: 50%
+  padding: 10px 15px
+  border: none
+  outline: none
+  transition: border-bottom-width ease-in .2s
+
+  &:hover
+    border-bottom: 2px solid grey
+
+.show
+  opacity: 1
+
+.hide
+  height: 0
+  opacity: 0
+  width: 0 !important
+  overflow: hidden
+
+#sections-wrapper
+  display: grid
+  grid: "calender today" 40vh "todo motivation" 30vh "goal happiness" 30vh / 1fr 1fr
+
+#today-section
+  grid-area: today
+
+#calender-section
+  grid-area: calender
+
+#todo-section
+  grid-area: todo
+
+#goal-section
+  grid-area: goal
+
+#motivation-section
+  grid-area: motivation
+
+#happiness-section
+  grid-area: happiness
