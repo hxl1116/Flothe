@@ -19,7 +19,7 @@ class TodayItem extends Component {
     render() {
         return (
             <li className="today-item-group">
-                <h3>{this.props.name}</h3>
+                <h3>{this.props.title}</h3>
                 <p onClick={this.toggleDesc}>{this.state.showDesc ? this.props.desc : this.props.location}</p>
             </li>
         )
@@ -28,7 +28,7 @@ class TodayItem extends Component {
 
 TodayItem.propTypes = {
     idx: PropTypes.number,
-    name: PropTypes.string,
+    title: PropTypes.string,
     desc: PropTypes.string,
     location: PropTypes.string,
     month: PropTypes.string,

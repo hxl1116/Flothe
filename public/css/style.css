@@ -265,7 +265,7 @@ body {
   padding-right: 5px;
   min-width: 60px;
 }
-.time-block-group .time-block-display {
+.time-block-group .time-block-item-display {
   display: flex;
   flex-flow: row nowrap;
   align-items: center;

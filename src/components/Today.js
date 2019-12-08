@@ -1,6 +1,7 @@
 import React, {Component, Fragment} from 'react'
 import PropTypes from 'prop-types'
 import TodayItem from "./TodayItem";
+import TimeBlock from "./TimeBlock";
 
 const times = [
     '8:00',
@@ -45,7 +46,7 @@ class Today extends Component {
             location: loc.value,
             start: start.value,
             end: end.value,
-            day: new Date().getDay(),
+            day: new Date().getDate(),
             month: new Date().getMonth()
         })
     };
@@ -109,7 +110,16 @@ class Today extends Component {
                 {sectionHeader}
                 {this.state.inputMode ? sectionForm : (
                     <div id="time-block-list">
-                        {times.map((value, idx) => timeBlock(value, idx))}
+                        {/*{console.log(this.props.items.filter(value => {*/}
+                        {/*    console.log(value.day, this.props.currentDay);*/}
+                        {/*    return value.day === this.props.currentDay;*/}
+                        {/*}))}*/}
+                        {times.map((value, idx) => <TimeBlock idx={idx} time={value} items={
+                            this.props.items.filter(
+                                item => item.day === this.props.currentDay.toString() && item.start === value
+                            )
+                        }/>)}
+                        {/*{times.map((value, idx) => timeBlock(value, idx))}*/}
                     </div>
                 )}
             </div>
