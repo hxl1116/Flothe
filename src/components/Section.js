@@ -49,7 +49,6 @@ class Section extends Component {
             </div>
         );
 
-        // todo - convert to Item-like structure
         const sectionForm = (
             <div className="section-input-group">
                 <input type="text" id={`${this.props.id}-title-input`} className="item-title-input"
