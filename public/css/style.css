@@ -77,31 +77,10 @@ body {
   height: auto !important;
   border: none !important;
 }
-.item-group input.title-edit {
-  background-color: #60CF95;
-  padding: 10px 15px;
-  border-radius: 20px;
-  outline: none;
-}
-.item-group input.desc-edit {
-  padding: 10px 15px;
-  background: none !important;
-  outline: none;
-}
-.item-group input.start-edit {
-  background-color: #60CF95;
-  padding: 10px 15px;
-  border-radius: 20px;
-  outline: none;
-}
-.item-group input.end-edit {
-  padding: 10px 15px;
-  background: none !important;
-  outline: none;
-}
 .item-group button {
-  font-size: 20px !important;
+  font-size: 18px !important;
   align-self: center;
+  width: 100%;
 }
 
 .options-group {
@@ -120,17 +99,6 @@ body {
   padding: 3px 3px;
 }
 
-.input-group {
-  width: 100%;
-}
-.input-group input {
-  width: 100%;
-  padding: 10px 15px;
-}
-.input-group button {
-  width: 100%;
-}
-
 .today-item-group {
   display: flex;
   flex-flow: column nowrap;
@@ -146,6 +114,21 @@ body {
 }
 .today-item-group p {
   padding: 5px 7px;
+}
+
+.item-title-input {
+  background-color: #60CF95;
+  min-height: 25px;
+  padding: 10px 15px;
+  border-radius: 20px;
+  outline: none;
+}
+
+.item-body-input {
+  min-height: 25px;
+  padding: 10px 15px;
+  background: none !important;
+  outline: none;
 }
 
 .section-container {
@@ -180,14 +163,23 @@ body {
 .section-input-group {
   display: flex;
   flex-flow: column nowrap;
-  align-self: center;
-  width: 80%;
+  justify-content: flex-start;
+  position: relative;
+  background-color: #53b582;
+  margin: 2px;
+  min-height: 125px;
+  border-radius: 20px;
+  overflow: hidden;
 }
 .section-input-group input {
-  width: 100%;
-  padding: 10px 15px;
+  font-size: 20px !important;
+  width: auto !important;
+  height: auto !important;
+  border: none !important;
 }
 .section-input-group button {
+  font-size: 18px !important;
+  align-self: center;
   width: 100%;
 }
 

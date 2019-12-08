@@ -1,4 +1,4 @@
-import React, {Component, Fragment} from 'react'
+import React, {Component} from 'react'
 import PropTypes from 'prop-types'
 
 class Item extends Component {
@@ -25,12 +25,6 @@ class Item extends Component {
         })
     };
 
-    // toggleEditGroup = () => {
-    //     this.setState({
-    //         showEditGroup: !this.state.showEditGroup
-    //     })
-    // };
-
     toggleOptionsGroup = () => {
         this.setState({
             showOptions: !this.state.showOptions
@@ -43,18 +37,12 @@ class Item extends Component {
         }, 5000)
     };
 
-    // toggleTimeGroup = () => {
-    //     this.setState({
-    //         showTimeGroup: !this.state.showTimeGroup
-    //     })
-    // };
-
     updateSelf = () => {
-        let name = document.querySelector(`#${this.props.section}-name-edit`);
+        let title = document.querySelector(`#${this.props.section}-title-edit`);
         let desc = document.querySelector(`#${this.props.section}-desc-edit`);
 
         this.props.updateItem(this.props.idx, {
-            name: (name.value || this.props.name),
+            title: (title.value || this.props.title),
             desc: (desc.value || this.props.desc)
         })
     };
@@ -109,71 +97,32 @@ class Item extends Component {
             </div>
         );
 
-        const editGroup = (
-            <div id={`${this.props.section}-edit-group`}
-                 className={`input-group ${this.state.editMode ? 'show' : 'hide'}`}>
-                <input type="text" id={`${this.props.section}-name-edit`} placeholder="Name"/>
-                <input type="text" id={`${this.props.section}-desc-edit`} placeholder="Description"/>
-                <button onClick={() => {
-                    this.updateSelf();
-                    this.toggleEditGroup()
-                }}>Change
-                </button>
-            </div>
-        );
-
-        const timeGroup = (
-            <div id={`${this.props.section}-time-group`}
-                 className={`section-input-group ${this.state.showTimeGroup ? 'show' : 'hide'}`}>
-                <input type="datetime-local" id={`${this.props.section}-start-time-edit`}/>
-                <input type="datetime-local" id={`${this.props.section}-end-time-edit`}/>
-                <button onClick={() => {
-                    this.scheduleSelf();
-                    this.deleteSelf();
-                    this.toggleScheduleMode()
-                }}>Schedule
-                </button>
-            </div>
-        );
-
         return (
             <>
                 <li className="item-group">
                     {!this.state.editMode && !this.state.scheduleMode ? (
-                        <h3>{this.props.name}</h3>
-                    ) : (
-                        <></>
-                    )}
+                        <h3>{this.props.title}</h3>
+                    ) : (<></>)}
                     {this.state.editMode ? (
-                        <input type="text" id={`${this.props.section}-name-edit`} className="title-edit"
+                        <input type="text" id={`${this.props.section}-title-edit`} className="item-title-input"
                                placeholder="Click to edit title"/>
-                    ) : (
-                        <></>
-                    )}
+                    ) : (<></>)}
                     {this.state.scheduleMode ? (
-                        <input type="text" id={`${this.props.section}-start-time-edit`} className="start-edit"
+                        <input type="text" id={`${this.props.section}-start-time-edit`} className="item-title-input"
                                placeholder="Click to enter start time"/>
-                    ) : (
-                        <></>
-                    )}
+                    ) : (<></>)}
                     <div className="item-content">
                         {!this.state.editMode && !this.state.scheduleMode ? (
                             <p>{this.props.desc}</p>
-                        ) : (
-                            <></>
-                        )}
+                        ) : (<></>)}
                         {this.state.editMode ? (
-                            <input type="text" id={`${this.props.section}-desc-edit`} className="desc-edit"
+                            <input type="text" id={`${this.props.section}-desc-edit`} className="item-body-input"
                                    placeholder="Click to edit description"/>
-                        ) : (
-                            <></>
-                        )}
+                        ) : (<></>)}
                         {this.state.scheduleMode ? (
-                            <input type="text" id={`${this.props.section}-end-time-edit`} className="end-edit"
+                            <input type="text" id={`${this.props.section}-end-time-edit`} className="item-body-input"
                                    placeholder="Click to enter end time"/>
-                        ) : (
-                            <></>
-                        )}
+                        ) : (<></>)}
                     </div>
                     {this.state.editMode ? (
                         <button onClick={() => {
@@ -189,13 +138,6 @@ class Item extends Component {
                     ) : (<></>)}
                     {optionsGroup}
                 </li>
-                {/* Migrate to Section */}
-                <div className={
-                    `input-group ${this.state.editMode || this.state.scheduleMode ? 'show' : 'hide'}`
-                }>
-                    {/*{editGroup}*/}
-                    {/*{timeGroup}*/}
-                </div>
             </>
         );
     }
@@ -204,7 +146,7 @@ class Item extends Component {
 Item.propTypes = {
     section: PropTypes.string,
     idx: PropTypes.number,
-    name: PropTypes.string,
+    title: PropTypes.string,
     desc: PropTypes.string,
     month: PropTypes.string,
     day: PropTypes.string,

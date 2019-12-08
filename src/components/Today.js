@@ -1,4 +1,4 @@
-import React, {Component} from 'react'
+import React, {Component, Fragment} from 'react'
 import PropTypes from 'prop-types'
 import TodayItem from "./TodayItem";
 
@@ -22,45 +22,45 @@ class Today extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            showInputGroup: false
+            inputMode: false
         }
     }
 
-    toggleAddInput = () => {
+    toggleInputMode = () => {
         this.setState({
-            showInputGroup: !this.state.showInputGroup
+            inputMode: !this.state.inputMode
         })
     };
 
     addItem = () => {
-        let name = document.querySelector(`#${this.props.name}-name-input`);
-        let desc = document.querySelector(`#${this.props.name}-desc-input`);
-        let loc = document.querySelector(`#${this.props.name}-loc-input`);
-        let start = document.querySelector(`#${this.props.name}-start-input`);
-        let end = document.querySelector(`#${this.props.name}-end-input`);
+        let title = document.querySelector(`#${this.props.id}-title-input`);
+        let desc = document.querySelector(`#${this.props.id}-desc-input`);
+        let loc = document.querySelector(`#${this.props.id}-loc-input`);
+        let start = document.querySelector(`#${this.props.id}-start-input`);
+        let end = document.querySelector(`#${this.props.id}-end-input`);
 
-        // if (name.value !== '') this.props.addItem({
-        //     name: name.value,
-        //     desc: desc.value,
-        //     location: loc.value,
-        //     start: start.value,
-        //     end: end.value,
-        //     day: new Date().getDay(),
-        //     month: new Date().getMonth()
-        // })
+        if (title.value !== '') this.props.addItem({
+            title: title.value,
+            desc: desc.value,
+            location: loc.value,
+            start: start.value,
+            end: end.value,
+            day: new Date().getDay(),
+            month: new Date().getMonth()
+        })
     };
 
     render() {
         const sectionHeader = (
             <div className="section-header">
                 <h2>{this.props.name}</h2>
-                <i className="material-icons" onClick={this.toggleAddInput}>
-                    {this.state.showInputGroup ? 'remove' : 'add'}
+                <i className="material-icons" onClick={this.toggleInputMode}>
+                    {this.state.inputMode ? 'remove' : 'add'}
                 </i>
             </div>
         );
 
-        // todo - Refresh data when ToDo Task is transferred
+        // todo - migrate to separate component
         const timeBlock = (time, idx) => (
             <div key={`time-block-${idx}`} className="time-block-group">
                 <p className="time-block-time">{time}</p>
@@ -69,7 +69,7 @@ class Today extends Component {
                         value => (value.day === this.props.currentDay.toString() && value.start === time) ? (
                             <TodayItem key={`today-item-${idx}`}
                                        idx={idx}
-                                       name={value.name}
+                                       title={value.title}
                                        desc={value.desc}
                                        location={value.location}
                                        month={value.month}
@@ -84,22 +84,20 @@ class Today extends Component {
         );
 
         const sectionForm = (
-            <div className={`section-input-group ${this.state.showInputGroup ? 'show' : 'hide'}`}>
-                <input type="text" id={`${this.props.id}-name-input`} placeholder="Title"/>
-                <input type="text" id={`${this.props.id}-desc-input`} placeholder="Description"/>
-                <input type="text" id={`${this.props.id}-loc-input`} placeholder="Location"/>
-                <input type="text" id={`${this.props.id}-start-input`} placeholder="Start time"/>
-                <input type="text" id={`${this.props.id}-end-input`} placeholder="End time"/>
-                    {/*{this.props.timed ? (*/}
-                    {/*    <>*/}
-                    {/*        <input type="text" id={`${this.props.name}-start-input`} defaultValue={'Current time'} placeholder={'Start time'}*/}
-                    {/*        />*/}
-                    {/*        <input type="text" id={`${this.props}-end-input`} placeholder={'End time'}/>*/}
-                    {/*    </>*/}
-                    {/*) : (<></>)}*/}
+            <div className="section-input-group">
+                <input type="text" id={`${this.props.id}-title-input`} className="item-title-input"
+                       placeholder="Title"/>
+                <input type="text" id={`${this.props.id}-desc-input`} className="item-body-input"
+                       placeholder="Description"/>
+                <input type="text" id={`${this.props.id}-loc-input`} className="item-body-input"
+                       placeholder="Location"/>
+                <input type="text" id={`${this.props.id}-start-input`} className="item-body-input"
+                       placeholder="Start time"/>
+                <input type="text" id={`${this.props.id}-end-input`} className="item-body-input"
+                       placeholder="End time"/>
                 <button onClick={() => {
                     this.addItem();
-                    this.toggleAddInput()
+                    this.toggleInputMode()
                 }}>
                     Add
                 </button>
@@ -109,10 +107,11 @@ class Today extends Component {
         return (
             <div id={`${this.props.id}-section`} className="section-container">
                 {sectionHeader}
-                {sectionForm}
-                <div id="time-block-list">
-                    {times.map((value, idx) => timeBlock(value, idx))}
-                </div>
+                {this.state.inputMode ? sectionForm : (
+                    <div id="time-block-list">
+                        {times.map((value, idx) => timeBlock(value, idx))}
+                    </div>
+                )}
             </div>
         )
     }
@@ -120,6 +119,7 @@ class Today extends Component {
 
 Today.propTypes = {
     id: PropTypes.string,
+    name: PropTypes.string,
     items: PropTypes.array,
     currentDay: PropTypes.number,
     addItem: PropTypes.func

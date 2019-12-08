@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, {Component, Fragment} from 'react';
 import PropTypes from 'prop-types';
 import Item from "./Item";
 
@@ -6,21 +6,21 @@ class Section extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            showInputGroup: false,
+            inputMode: false,
         }
     }
 
-    toggleAddInput = () => {
+    toggleInputMode = () => {
         this.setState({
-            showInputGroup: !this.state.showInputGroup
+            inputMode: !this.state.inputMode
         })
     };
 
     addItem = () => {
-        let name = document.querySelector(`#${this.props.name}-name-input`);
-        let desc = document.querySelector(`#${this.props.name}-desc-input`);
-        if (name.value !== '') this.props.addItem({
-            name: name.value,
+        let title = document.querySelector(`#${this.props.id}-title-input`);
+        let desc = document.querySelector(`#${this.props.id}-desc-input`);
+        if (title.value !== '') this.props.addItem({
+            title: title.value,
             desc: desc.value,
             day: new Date().getDay(),
             month: new Date().getMonth()
@@ -43,19 +43,36 @@ class Section extends Component {
         const sectionHeader = (
             <div className="section-header">
                 <h2>{this.props.name}</h2>
-                <i className="material-icons" style={{fontSize: 40}} onClick={this.toggleAddInput}>
-                    {this.state.showInputGroup ? 'remove' : 'add'}
+                <i className="material-icons" style={{fontSize: 40}} onClick={this.toggleInputMode}>
+                    {this.state.inputMode ? 'remove' : 'add'}
                 </i>
+            </div>
+        );
+
+        // todo - convert to Item-like structure
+        const sectionForm = (
+            <div className="section-input-group">
+                <input type="text" id={`${this.props.id}-title-input`} className="item-title-input"
+                       placeholder="Click to enter title"/>
+                <input type="text" id={`${this.props.id}-desc-input`} className="item-body-input"
+                       placeholder="Click to enter description"/>
+                <button onClick={() => {
+                    this.addItem();
+                    this.toggleInputMode()
+                }}>
+                    Add
+                </button>
             </div>
         );
 
         const sectionList = (
             <ol id={`${this.props.id}-section-list`} className="section-list">
+                {this.state.inputMode ? sectionForm : <></>}
                 {Object.values(this.props.items).map((val, idx) => (
-                    <Item key={`${this.props.name}-task-${idx}`}
+                    <Item key={`${this.props.id}-task-${idx}`}
                           section={this.props.id}
                           idx={idx}
-                          name={val.name}
+                          title={val.title}
                           desc={val.desc}
                           start={val.start}
                           end={val.end}
@@ -67,25 +84,10 @@ class Section extends Component {
             </ol>
         );
 
-        // todo - convert to Item-like structure
-        const sectionForm = (
-            <div className={`section-input-group ${this.state.showInputGroup ? 'show' : 'hide'}`}>
-                <input type="text" id={`${this.props.name}-name-input`} placeholder="Name"/>
-                <input type="text" id={`${this.props.name}-desc-input`} placeholder="Description"/>
-                <button onClick={() => {
-                    this.addItem();
-                    this.toggleAddInput()
-                }}>
-                    Add
-                </button>
-            </div>
-        );
-
         return (
             <div id={`${this.props.id}-section`} className="section-container">
                 {sectionHeader}
                 {sectionList}
-                {sectionForm}
             </div>
         )
     }

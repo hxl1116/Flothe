@@ -1,3 +1,6 @@
+$item-primary: #60CF95
+$item-secondary: #53b582
+
 .section-container
   display: flex
   flex-flow: column nowrap
@@ -27,12 +30,21 @@
 .section-input-group
   display: flex
   flex-flow: column nowrap
-  align-self: center
-  width: 80%
+  justify-content: flex-start
+  position: relative
+  background-color: $item-secondary
+  margin: 2px
+  min-height: 125px
+  border-radius: 20px
+  overflow: hidden
 
   input
-    width: 100%
-    padding: 10px 15px
+    font-size: 20px !important
+    width: auto !important
+    height: auto !important
+    border: none !important
 
   button
+    font-size: 18px !important
+    align-self: center
     width: 100%

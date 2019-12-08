@@ -5,12 +5,12 @@ import Calendar from "./Calendar";
 import Today from "./Today";
 
 const testTodoTask = {
-    name: 'Test Item',
+    title: 'Test Item',
     desc: 'This is a test To-Do Item'
 };
 
 const testCalendarEvent = {
-    name: 'Test Item',
+    title: 'Test Item',
     desc: 'This is a test Calendar Event',
     location: 'Victor, NY',
     month: '11',
