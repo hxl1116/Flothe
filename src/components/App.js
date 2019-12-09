@@ -24,10 +24,10 @@ class App extends Component {
         super(props);
         this.state = {
             calendarEvents: [
-                testCalendarEvent
+                // testCalendarEvent
             ],
             todoTasks: [
-                testTodoTask
+                // testTodoTask
             ],
             goalItems: [],
             motivationItems: [],
