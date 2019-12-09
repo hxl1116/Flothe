@@ -8,8 +8,11 @@ class Sidebar extends Component {
         super(props);
         this.state = {
             showSideMenu: false,
-            showTeamInputGroup: false,
-            teams: []
+            inputMode: false,
+            teams: [{
+                name: 'Test Team',
+                members: ['Henry', 'John']
+            }]
         }
     }
 
@@ -19,9 +22,9 @@ class Sidebar extends Component {
         })
     };
 
-    toggleTeamGroup = () => {
+    toggleInputMode = () => {
         this.setState({
-            showTeamInputGroup: !this.state.showTeamInputGroup
+            inputMode: !this.state.inputMode
         })
     };
 
@@ -46,17 +49,17 @@ class Sidebar extends Component {
     };
 
     render() {
-        const menuSectionHeader = (name) => (
+        const header = (name) => (
             <div className="section-header">
                 <h2>{name}</h2>
-                <i className="material-icons" onClick={this.toggleTeamGroup}>
+                <i className="material-icons" onClick={this.toggleInputMode}>
                     {this.state.showTeamInputGroup ? 'remove' : 'add'}
                 </i>
             </div>
         );
 
         const inputGroup = (
-            <div id="team-input-group" className={`input-group ${this.state.showTeamInputGroup ? 'show' : 'hide'}`}>
+            <div id="team-input-group" className="input-group">
                 <input type="text" id="team-name-input" placeholder="Team Name" required={true}/>
                 <p>Invite Members</p>
                 <input type="email" id="team-email-input-1" placeholder="Member 1"/>
@@ -65,7 +68,7 @@ class Sidebar extends Component {
                 <input type="email" id="team-email-input-1" placeholder="Member 1"/>
                 <button onClick={() => {
                     this.addTeam();
-                    this.toggleTeamGroup();
+                    this.toggleInputMode();
                 }}>Create
                 </button>
             </div>
@@ -78,17 +81,16 @@ class Sidebar extends Component {
                     <ul id="side-menu">
                         <div id="profile-img"/>
                         <div id="team-section">
-                            {menuSectionHeader('Teams')}
-                            <ol>
-                                {Object.values(this.state.teams).map((val, idx) => (
-                                    <MenuItem key={`team-${idx}`} idx={idx} name={val.name} members={val.members}/>
-                                ))}
-                            </ol>
-                            {inputGroup}
+                            {header('Teams')}
+                            {this.state.inputMode ? (inputGroup) : (
+                                <ol>
+                                    {this.state.teams.map((val, idx) => (
+                                        <MenuItem key={`team-${idx}`} idx={idx} name={val.name} members={val.members}/>
+                                    ))}
+                                </ol>
+                            )}
                         </div>
-                        {Object.values(sideMenuItems).map(val => (
-                            <li key={`${val}-side-menu-item`}><h2>{val}</h2></li>
-                        ))}
+                        {sideMenuItems.map(val => (<li key={`${val}-side-menu-item`}><h2>{val}</h2></li>))}
                     </ul>
                 </div>
             </Fragment>

@@ -9,14 +9,12 @@ class MenuItem extends Component {
 
     render() {
         return (
-            <div className="item-group">
-                <li>
-                    <h3>{this.props.name}</h3>
-                    {Object.values(this.props.members).map(val => (
-                        <p>{val}</p>
-                    ))}
-                </li>
-            </div>
+            <li className="menu-item-group">
+                <h3>{this.props.name}</h3>
+                {Object.values(this.props.members).map(val => (
+                    <p>{val}</p>
+                ))}
+            </li>
         )
     }
 }
