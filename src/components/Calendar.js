@@ -90,7 +90,7 @@ class Calendar extends Component {
         const day = (date) => (
             <div key={`day-${date}`} id={`day-${date}`}
                  className={`calendar-day ${this.props.currentDay === date ? 'selected' : ''}`}
-                 onClick={() => this.selectDay(date + 1)}>
+                 onClick={() => this.selectDay(date)}>
                 <p>{date}</p>
             </div>
         );
