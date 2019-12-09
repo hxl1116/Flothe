@@ -136,6 +136,7 @@ class App extends Component {
         let task = this.state.todoTasks.filter((item, jdx) => idx === jdx);
 
         // task[0].idx = idx;
+        task[0].location = data.location;
         task[0].month = data.month;
         task[0].day = data.day;
         task[0].start = data.start;

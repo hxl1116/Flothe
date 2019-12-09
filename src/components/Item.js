@@ -1,4 +1,4 @@
-import React, {Component} from 'react'
+import React, {Component, Fragment} from 'react'
 import PropTypes from 'prop-types'
 
 class Item extends Component {
@@ -54,9 +54,11 @@ class Item extends Component {
     scheduleSelf = () => {
         let startTime = document.querySelector(`#${this.props.section}-start-time-edit`);
         let endTime = document.querySelector(`#${this.props.section}-end-time-edit`);
+        let location = document.querySelector(`#${this.props.section}-loc-edit`);
 
-        if (startTime.value !== '' && endTime.value !== '') {
+        if (startTime.value !== '' && endTime.value !== '' && location.value !== '') {
             this.props.scheduleItem(this.props.idx, {
+                location: location.value,
                 month: new Date().getMonth(),
                 day: new Date().getDate(),
                 start: startTime.value,
@@ -105,11 +107,11 @@ class Item extends Component {
                     ) : (<></>)}
                     {this.state.editMode ? (
                         <input type="text" id={`${this.props.section}-title-edit`} className="item-title-input"
-                               placeholder="Click to edit title"/>
+                               placeholder="Title"/>
                     ) : (<></>)}
                     {this.state.scheduleMode ? (
                         <input type="text" id={`${this.props.section}-start-time-edit`} className="item-title-input"
-                               placeholder="Click to enter start time"/>
+                               placeholder="Start Time"/>
                     ) : (<></>)}
                     <div className="item-content">
                         {!this.state.editMode && !this.state.scheduleMode ? (
@@ -117,11 +119,16 @@ class Item extends Component {
                         ) : (<></>)}
                         {this.state.editMode ? (
                             <input type="text" id={`${this.props.section}-desc-edit`} className="item-body-input"
-                                   placeholder="Click to edit description"/>
+                                   placeholder="Description"/>
                         ) : (<></>)}
                         {this.state.scheduleMode ? (
-                            <input type="text" id={`${this.props.section}-end-time-edit`} className="item-body-input"
-                                   placeholder="Click to enter end time"/>
+                            <Fragment>
+                                <input type="text" id={`${this.props.section}-end-time-edit`}
+                                       className="item-body-input"
+                                       placeholder="End Time"/>
+                                <input type="text" id={`${this.props.section}-loc-edit`} className="item-body-input"
+                                       placeholder="Location"/>
+                            </Fragment>
                         ) : (<></>)}
                     </div>
                     {this.state.editMode ? (

@@ -253,6 +253,9 @@ body {
   padding: 10px 15px;
   overflow-y: auto;
 }
+#time-block-list li {
+  margin: 0 5px;
+}
 
 .time-block-group {
   display: flex;
