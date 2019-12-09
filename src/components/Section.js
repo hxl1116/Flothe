@@ -22,7 +22,7 @@ class Section extends Component {
         if (title.value !== '') this.props.addItem({
             title: title.value,
             desc: desc.value,
-            day: new Date().getDay(),
+            day: new Date().getDate(),
             month: new Date().getMonth()
         })
     };

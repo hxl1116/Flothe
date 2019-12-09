@@ -13,8 +13,8 @@ const testCalendarEvent = {
     title: 'Test Item',
     desc: 'This is a test Calendar Event',
     location: 'Victor, NY',
-    month: '11',
-    day: '7',
+    month: 11,
+    day: 8,
     start: '10:00',
     end: '11:00'
 };
@@ -158,12 +158,12 @@ class App extends Component {
             <>
                 <Sidebar/>
                 <div id="sections-wrapper" className="day-layout">
-                    <Calendar id="calendar" items={this.state.calendarEvents} currentDay={this.state.currentDay - 1}
+                    <Calendar id="calendar" items={this.state.calendarEvents} currentDay={this.state.currentDay}
                               selectDay={(date) => this.selectDay(date)}/>
                     <Today id="today"
                            name="Today"
                            items={this.state.calendarEvents}
-                           currentDay={this.state.currentDay - 1}
+                           currentDay={this.state.currentDay}
                            addItem={(data) => this.addItem('calendar', data)}
                     />
                     <Section id="todo"

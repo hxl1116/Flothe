@@ -58,7 +58,7 @@ class Item extends Component {
         if (startTime.value !== '' && endTime.value !== '') {
             this.props.scheduleItem(this.props.idx, {
                 month: new Date().getMonth(),
-                day: (new Date().getDate() - 1).toString(),
+                day: new Date().getDate(),
                 start: startTime.value,
                 end: endTime.value
             });

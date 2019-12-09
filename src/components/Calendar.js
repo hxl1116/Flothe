@@ -91,11 +91,11 @@ class Calendar extends Component {
             <div key={`day-${date}`} id={`day-${date}`}
                  className={`calendar-day ${this.props.currentDay === date ? 'selected' : ''}`}
                  onClick={() => this.selectDay(date + 1)}>
-                <p>{date + 1}</p>
+                <p>{date}</p>
             </div>
         );
 
-        for (let idx = 0; idx < months[this.state.currentMonth].days; idx++) {
+        for (let idx = 1; idx <= months[this.state.currentMonth].days; idx++) {
             days.push(day(idx))
         }
 
