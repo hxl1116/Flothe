@@ -3,16 +3,20 @@ import MenuItem from "./MenuItem";
 
 const sideMenuItems = ['Profile', 'Settings'];
 
+const testTeam = {
+    name: 'Test Team',
+    members: ['Henry', 'John']
+};
+
 class Sidebar extends Component {
     constructor(props) {
         super(props);
         this.state = {
             showSideMenu: false,
             inputMode: false,
-            teams: [{
-                name: 'Test Team',
-                members: ['Henry', 'John']
-            }]
+            teams: [
+                // testTeam
+            ]
         }
     }
 
