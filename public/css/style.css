@@ -83,6 +83,11 @@ body {
   width: 100%;
 }
 
+.item-content {
+  display: flex;
+  flex-flow: column nowrap;
+}
+
 .options-group {
   display: flex;
   flex-flow: column;

@@ -1,4 +1,4 @@
-import React, {Component, Fragment} from 'react'
+import React, {Component} from 'react'
 import PropTypes from 'prop-types'
 
 class Item extends Component {
@@ -122,13 +122,13 @@ class Item extends Component {
                                    placeholder="Description"/>
                         ) : (<></>)}
                         {this.state.scheduleMode ? (
-                            <Fragment>
+                            <>
                                 <input type="text" id={`${this.props.section}-end-time-edit`}
                                        className="item-body-input"
                                        placeholder="End Time"/>
                                 <input type="text" id={`${this.props.section}-loc-edit`} className="item-body-input"
                                        placeholder="Location"/>
-                            </Fragment>
+                            </>
                         ) : (<></>)}
                     </div>
                     {this.state.editMode ? (
