@@ -1,4 +1,4 @@
-import React, {Component} from 'react'
+import React, {Component, Fragment} from 'react'
 import PropTypes from 'prop-types'
 import TodayItem from "./TodayItem";
 
@@ -12,7 +12,7 @@ class TimeBlock extends Component {
             <div className="time-block-group">
                 <p className="time-block-time">{this.props.time}</p>
                 <div className="time-block-item-display">
-                    {this.props.items.map(item => (
+                    {this.props.items.map(item => item.start === this.props.time ? (
                         <TodayItem idx={this.props.idx}
                                    title={item.title}
                                    desc={item.desc}
@@ -22,7 +22,7 @@ class TimeBlock extends Component {
                                    start={item.start}
                                    end={item.end}
                         />
-                    ))}
+                    ) : (<></>))}
                 </div>
             </div>
         )

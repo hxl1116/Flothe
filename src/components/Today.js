@@ -110,16 +110,33 @@ class Today extends Component {
                 {sectionHeader}
                 {this.state.inputMode ? sectionForm : (
                     <div id="time-block-list">
-                        {/*{console.log(this.props.items.filter(value => {*/}
-                        {/*    console.log(value.day, this.props.currentDay);*/}
-                        {/*    return value.day === this.props.currentDay;*/}
-                        {/*}))}*/}
-                        {times.map((value, idx) => <TimeBlock idx={idx} time={value} items={
-                            this.props.items.filter(
-                                item => item.day === this.props.currentDay.toString() && item.start === value
-                            )
-                        }/>)}
-                        {/*{times.map((value, idx) => timeBlock(value, idx))}*/}
+                        {/*<TimeBlock idx={0} time="8:00" items={this.props.items}/>*/}
+                        {/*<TimeBlock idx={1} time="9:00" items={this.props.items}/>*/}
+                        {/*<TimeBlock idx={2} time="10:00" items={this.props.items}/>*/}
+                        {/*<TimeBlock idx={3} time="11:00" items={this.props.items}/>*/}
+                        {/*<TimeBlock idx={4} time="12:00" items={this.props.items}/>*/}
+                        {/*<TimeBlock idx={5} time="1:00" items={this.props.items}/>*/}
+                        {/*<TimeBlock idx={6} time="2:00" items={this.props.items}/>*/}
+                        {/*<TimeBlock idx={7} time="3:00" items={this.props.items}/>*/}
+                        {/*<TimeBlock idx={8} time="4:00" items={this.props.items}/>*/}
+                        {/*<TimeBlock idx={9} time="5:00" items={this.props.items}/>*/}
+                        {/*<TimeBlock idx={10} time="6:00" items={this.props.items}/>*/}
+                        {/*<TimeBlock idx={11} time="7:00" items={this.props.items}/>*/}
+                        {/*<TimeBlock idx={12} time="8:00" items={this.props.items}/>*/}
+
+                        {/*{times.map((value, idx) => <TimeBlock idx={idx} time={value} items={*/}
+                        {/*    this.props.items.filter(*/}
+                        {/*        item => item.day === this.props.currentDay.toString() && item.start === value*/}
+                        {/*    )*/}
+                        {/*}/>)}*/}
+
+                        {times.map(
+                            (time, idx) => <TimeBlock idx={idx} time={time} items={
+                                this.props.items.filter(
+                                    item => item.start === time && item.day === this.props.currentDay.toString()
+                                )
+                            }/>
+                        )}
                     </div>
                 )}
             </div>

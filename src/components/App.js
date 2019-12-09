@@ -135,7 +135,7 @@ class App extends Component {
     transferTaskToEvent = (idx, data) => {
         let task = this.state.todoTasks.filter((item, jdx) => idx === jdx);
 
-        task[0].idx = idx;
+        // task[0].idx = idx;
         task[0].month = data.month;
         task[0].day = data.day;
         task[0].start = data.start;
@@ -148,7 +148,6 @@ class App extends Component {
     };
 
     selectDay = (date) => {
-        // console.log(date, date.toString());
         this.setState({
             currentDay: date
         })
